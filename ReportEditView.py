@@ -4,13 +4,33 @@ from tkinter.font import families
 from typing import Dict, Optional
 import Constants
 from math import floor
-from WelcomeView import *
-class NumDbGraph(Frame):
+
+
+
+class NumDbGraphView(Frame):
     def fill(self):
+        self.entryViews = [[0 for i in range(10)] for j in range(10)]
+        self.entryVariables = [[0 for i in range(10)] for j in range(10)]
+
+        print(self.entryVariables)
         for i  in range(10):
             for j in range(10):
-                Entry(self).place(relwidth= 0.07, relheight= 0.07, relx =0.1 * i , rely = 0.1 * j)
-
+                if i + j <=2 or i+j >=16 or i - j >= 7 or j - i >=7:
+                    self.entryVariables[i][j] = None
+                else:
+                     self.entryVariables[i][j] = StringVar()
+                     
+        for i  in range(10):
+            for j in range(10):
+                if i + j <=2 or i+j >=16 or i - j >= 7 or j - i >=7:
+                    self.entryViews[i][j] = None
+                else:
+                    self.entryViews[i][j] = Entry(self, textvariable= self.entryVariables[i][j])
+                    self.entryViews[i][j].configure(state = DISABLED)
+                    self.entryViews[i][j].place(relwidth= 0.07, relheight= 0.07, relx =0.03 + 0.1 * i , rely =0.03+ 0.1 * j)
+    def setTitle(self, title):
+        self.title = Label(self, text = title)
+        self.title.place(relx = 0, rely = 0)
 
 class ReportEditView:
     def __init__(self, root) -> None:
@@ -33,9 +53,13 @@ class ReportEditView:
         self.reportSelectionList.configure(yscrollcommand=self.hsb.set)
         self.reportSelectionList.pack(fill = "both", pady= 5)
         self.reportSelectionList.place(relwidth= 1, relheight=0.95, rely = 0.15)
-        self.reportSelectionList.insert(-1, "    SAMPLE_FILE.CSV")
-        self.reportSelectionList.insert(-1, "   SAMPLE_FILE_2.CSV")
-        self.reportSelectionList.itemconfig(1, {"bg": "green"})
+        #TODO: Replace with proper logic
+        self.reportSelectionList.insert(-1, "    SAMPLE_FILE.PDF")
+        self.reportSelectionList.insert(-1, "   SAMPLE_FILE_2.PDF")
+        self.reportSelectionList.insert(-1, "   SAMPLE_FILE_3.PDF")
+        self.reportSelectionList.insert(-1, "   SAMPLE_FILE_4.PDF")
+        self.reportSelectionList.insert(-1, "   SAMPLE_FILE_5.PDF")
+        self.reportSelectionList.itemconfig(0, {"bg": "green"})
 
         
         self.commitButton = Button(self.main, text = "Commit")
@@ -60,8 +84,10 @@ class ReportEditView:
         self.VFIFrame.place(relwidth= 0.3, anchor = "n", relx = 0.15, rely = 0.78)
         self.VFILabel = Label(self.VFIFrame, text = "VFI")
         self.VFILabel.pack(side = "left", padx=10)
+
         self.VFIEntry = Entry(self.VFIFrame)
         self.VFIEntry.pack(side = "left", fill = 'x', expand = True, padx= 10) 
+
 
         self.MDFrame = Frame(self.main)
         self.MDFrame.pack()
@@ -88,7 +114,7 @@ class ReportEditView:
         self.PSDPvalue.pack(side = "left", padx= 10) 
 
         self.patientFrame = Frame(self.root, highlightbackground="black", highlightthickness=1)
-        self.patientFrame.place(relwidth = 0.25,relheight= 0.13, relx = 0.35, rely = 0.1)
+        self.patientFrame.place(relwidth = 0.25,relheight= 0.13, relx = 0.35, rely = 0.03)
         self.patientLabel = Label(self.patientFrame,text="Patient", highlightbackground="black", highlightthickness=1)
         self.patientLabel.pack(side = "top")
 
@@ -109,7 +135,7 @@ class ReportEditView:
 
 
         self.settingsFrame = Frame(self.root, highlightbackground="black", highlightthickness=1)
-        self.settingsFrame.place(relwidth = 0.25,relheight= 0.13, relx = 0.35, rely = 0.27)
+        self.settingsFrame.place(relwidth = 0.25,relheight= 0.13, relx = 0.35, rely = 0.2)
         self.settingsLabel = Label(self.settingsFrame,text="Settings", highlightbackground="black", highlightthickness=1)
         self.settingsLabel.pack(side = "top")
 
@@ -133,13 +159,14 @@ class ReportEditView:
         self.settingsBackgroundEntry = Entry(self.settingsFrame)
         self.settingsBackgroundEntry.place(relx = 0.70, rely = 0.65, relwidth= 0.25) 
 
-        self.sensitivityGraph = NumDbGraph(self.main)
-        self.sensitivityGraph.place(relheight=0.40, relwidth= 0.30, relx = 0.62, rely = 0.03)
+        self.sensitivityGraph = NumDbGraphView(self.main)
+        self.sensitivityGraph.place(relheight=0.40, relwidth= 0.30, relx = 0.66, rely = 0.03)
         self.sensitivityGraph.fill()
+        self.sensitivityGraph.setTitle("Sensitivity")
 
 
         self.reliabilityMetricsFrame = Frame(self.root, highlightbackground="black", highlightthickness=1)
-        self.reliabilityMetricsFrame.place(relwidth = 0.25,relheight= 0.13, relx = 0.35, rely = 0.41)
+        self.reliabilityMetricsFrame.place(relwidth = 0.25,relheight= 0.13, relx = 0.35, rely = 0.35)
         self.reliabilityMetricsLabel = Label(self.reliabilityMetricsFrame,text="Settings", highlightbackground="black", highlightthickness=1)
         self.reliabilityMetricsLabel.pack(side = "top")
 
@@ -165,17 +192,25 @@ class ReportEditView:
 
 
 
-        self.totalDeviationGraph = NumDbGraph(self.main)
+        self.totalDeviationGraph = NumDbGraphView(self.main)
         self.totalDeviationGraph.place(relheight=0.40, relwidth= 0.30, relx = 0.35, rely = 0.55)
         self.totalDeviationGraph.fill()
+        self.totalDeviationGraph.setTitle("Total deviation")
 
-        self.patternDeviationGraph = NumDbGraph(self.main)
+        self.patternDeviationGraph = NumDbGraphView(self.main)
         self.patternDeviationGraph.place(relheight=0.40, relwidth= 0.30, relx = 0.70, rely = 0.55)
         self.patternDeviationGraph.fill()
+        self.patternDeviationGraph.setTitle("Pattern deviation")
     
     def back(self):
         self.main.destroy()
-        WelcomeView(self.root)
+        try:
+            WelcomeView(self.root)
+        except:
+            from WelcomeView import WelcomeView
+            WelcomeView(self.root)
+
+    
 
 
 
