@@ -1,10 +1,9 @@
 
 class PatientData:
-    def __init__(self):
-        self.ID = None
-        self.eyeSide = None
-        self.datetime = None
-        self.age = None
+    def __init__(self, eyeSide, datetime, age):
+        self.eyeSide = eyeSide
+        self.datetime = datetime
+        self.age = age
 
     def setID(self, ID):
         self.ID = ID

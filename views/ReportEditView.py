@@ -1,18 +1,17 @@
 
 from tkinter import *
+from tkinter import filedialog
 from tkinter.font import families
 from typing import Dict, Optional
 import Constants
 from math import floor
 
-
+import string
 
 class NumDbGraphView(Frame):
     def fill(self):
         self.entryViews = [[0 for i in range(10)] for j in range(10)]
         self.entryVariables = [[0 for i in range(10)] for j in range(10)]
-
-        print(self.entryVariables)
         for i  in range(10):
             for j in range(10):
                 if i + j <=2 or i+j >=16 or i - j >= 7 or j - i >=7:
@@ -28,6 +27,7 @@ class NumDbGraphView(Frame):
                     self.entryViews[i][j] = Entry(self, textvariable= self.entryVariables[i][j])
                     self.entryViews[i][j].configure(state = DISABLED)
                     self.entryViews[i][j].place(relwidth= 0.07, relheight= 0.07, relx =0.03 + 0.1 * i , rely =0.03+ 0.1 * j)
+    
     def setTitle(self, title):
         self.title = Label(self, text = title)
         self.title.place(relx = 0, rely = 0)
@@ -41,13 +41,32 @@ class NumDbGraphView(Frame):
                 else:
                     result[i][j] = self.entryVariables[i][j].get()
 
-    def setVariables(self, new_matrix):
-        for i  in range(10):
-            for j in range(10):
-                if i + j <=2 or i+j >=16 or i - j >= 7 or j - i >=7:
-                    self.entryVariables[i][j] = None
-                else:
-                    self.entryVariables[i][j].set(str(new_matrix[i][j]))
+    def setVariables(self, new_matrix, eye):
+
+        if eye.lower() == "right":
+            for i  in range(10):
+                for j in range(10):
+                    if i + j <=2 or i+j >=16 or i - j >= 7 or j - i >=7:
+                        self.entryVariables[i][j] = None
+                    elif new_matrix[i][j] == None:
+                        self.entryVariables[i][j].set("")
+                        self.entryViews[i][j].configure(state = DISABLED)
+                    else:
+                        self.entryViews[i][j].configure(state = NORMAL)
+                        self.entryVariables[i][j].set(str(new_matrix[i][j]))
+        else:
+            for i in range(10):
+                    for j in range(9, -1, -1):
+                        if i + j <=2 or i+j >=16 or i - j >= 7 or j - i >=7:
+                            self.entryVariables[i][j] = None
+                        elif new_matrix[i][j] == None:
+                            self.entryVariables[i][j].set("")
+                            self.entryViews[i][j].configure(state = DISABLED)
+                        else:
+                            self.entryViews[i][j].configure(state = NORMAL)
+                            self.entryVariables[i][j].set(str(new_matrix[i][j]))
+        
+
 
 
 class ReportEditView:
@@ -73,18 +92,13 @@ class ReportEditView:
         self.reportSelectionList.pack(fill = "both", pady= 5)
         self.reportSelectionList.place(relwidth= 1, relheight=0.95, rely = 0.15)
         #TODO: Replace with proper logic
-        self.reportSelectionList.insert(-1, "    SAMPLE_FILE.PDF")
-        self.reportSelectionList.insert(-1, "   SAMPLE_FILE_2.PDF")
-        self.reportSelectionList.insert(-1, "   SAMPLE_FILE_3.PDF")
-        self.reportSelectionList.insert(-1, "   SAMPLE_FILE_4.PDF")
-        self.reportSelectionList.insert(-1, "   SAMPLE_FILE_5.PDF")
-        self.reportSelectionList.itemconfig(0, {"bg": "green"})
+        self.reportSelectionList.bind("<<ListboxSelect>>", self.onSelectReport)
 
         
         self.commitButton = Button(self.main, text = "Commit")
         self.commitButton.place(anchor = "n",relx= 0.07, rely = 0.6)
 
-        self.loadButton = Button(self.main, text = "Load")
+        self.loadButton = Button(self.main, text = "Load", command = self.loadStudy)
         self.loadButton.place(anchor = "n",relx= 0.07, rely = 0.65)
         
         self.backButton = Button(self.main, text = "Back", command= self.back)
@@ -200,24 +214,28 @@ class ReportEditView:
         self.reliabilityMetricsLabel = Label(self.reliabilityMetricsFrame,text="Settings", highlightbackground="black", highlightthickness=1)
         self.reliabilityMetricsLabel.pack(side = "top")
 
+        self.FIXLOS = StringVar()
         self.FIXLOSLabel = Label(self.reliabilityMetricsFrame, text = "FIX LOS", font = ("Arial", 8))
         self.FIXLOSLabel.place(relx = 0.02, rely = 0.35)
-        self.FIXLOSEntry = Entry(self.reliabilityMetricsFrame)
+        self.FIXLOSEntry = Entry(self.reliabilityMetricsFrame, textvariable=self.FIXLOS)
         self.FIXLOSEntry.place(relx = 0.18, rely = 0.35, relwidth= 0.25) 
 
+        self.duration = StringVar()
         self.durationLabel = Label(self.reliabilityMetricsFrame, text = "Duration", font = ("Arial", 8))
         self.durationLabel.place(relx = 0.45, rely = 0.35)
-        self.durationEntry = Entry(self.reliabilityMetricsFrame)
+        self.durationEntry = Entry(self.reliabilityMetricsFrame, textvariable=self.duration)
         self.durationEntry.place(relx = 0.65, rely = 0.35, relwidth= 0.3) 
 
+        self.FPR = StringVar()
         self.FPRLabel = Label(self.reliabilityMetricsFrame, text = "FPR", font = ("Arial", 7))
         self.FPRLabel.place(relx = 0.02, rely = 0.65)
-        self.FPREntry = Entry(self.reliabilityMetricsFrame)
-        self.FPREntry.place(relx = 0.18, rely = 0.65, relwidth= 0.25) 
+        self.FPREntry = Entry(self.reliabilityMetricsFrame, textvariable = self.FPR)
+        self.FPREntry.place(relx = 0.18, rely = 0.65, relwidth= 0.25)  
 
+        self.FNR = StringVar()
         self.FNRLabel = Label(self.reliabilityMetricsFrame, text = "FNR", font = ("Arial", 7))
         self.FNRLabel.place(relx = 0.45, rely = 0.65)
-        self.FNREntry = Entry(self.reliabilityMetricsFrame)
+        self.FNREntry = Entry(self.reliabilityMetricsFrame, textvariable = self.FNR)
         self.FNREntry.place(relx = 0.70, rely = 0.65, relwidth= 0.25) 
 
 
@@ -231,11 +249,27 @@ class ReportEditView:
         self.patternDeviationGraph.place(relheight=0.40, relwidth= 0.30, relx = 0.70, rely = 0.55)
         self.patternDeviationGraph.fill()
         self.patternDeviationGraph.setTitle("Pattern deviation")
-    
+        
+    def onSelectReport(self, event):
+        selection = event.widget.curselection()
+        if selection:
+            index = selection[0]
+            self.control.displayReport(index)
+
     def back(self):
         self.main.destroy()
         self.control.back()
-            
+
+    def loadStudy(self):
+
+        path = filedialog.askopenfilename()
+        self.reportSelectionList.delete(0, END)
+        self.control.readCsv(path)
+
+    def displayReportList(self, namelist):
+        for i in range(len(namelist)):
+            self.reportSelectionList.insert(i, namelist[i])
+    
 
     
 

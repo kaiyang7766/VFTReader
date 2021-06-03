@@ -21,14 +21,12 @@ class WelcomeView:
 
         self.inputHint = Label(self.inputFrame, text="Input directory: ", padx = 30)
         self.inputHint.pack(side = "left")
-
         
-        #TODO: Create logic for default path
+        #TODO: Create logic for default path 
         self.inputPath = StringVar()
         self.inputPath.set("This is a default path")
         self.inputPathEntry = Entry(self.inputFrame, textvariable= self.inputPath, width= 70)
         self.inputPathEntry.pack(fill = "y", side = "left", expand= False)
-
 
         self.browseInputDir = Button(self.inputFrame, text= "Browse", command = self.onBrowseDirectory)
         self.browseInputDir.pack(fill = "y", side = "left", expand= False, padx= 10)
@@ -42,10 +40,6 @@ class WelcomeView:
         self.continueButton.place(anchor = "n", relx = 0.5, rely = 0.7)
         self.start()
     
-        
-        
-
-
     def onNextActivity(self):
         self.main.destroy()
         new = ReportEditControl(self.root)
