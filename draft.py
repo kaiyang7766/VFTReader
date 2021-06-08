@@ -5,6 +5,7 @@ import pdf2image
 #TODO: Find a way to set the path for pytesseract
 pytesseract.pytesseract.tesseract_cmd = "C:/Program Files/Tesseract-OCR/tesseract.exe"
 def pdf_to_img(pdf_file):
+    
     #TODO: Same for poppler
     return pdf2image.convert_from_path(pdf_file, poppler_path= "C:/Users/HP - PC/Downloads/poppler-0.68.0_x86/poppler-0.68.0/bin")
 

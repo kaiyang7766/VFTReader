@@ -4,10 +4,12 @@ from CSVReader import CSVReader
 from views.ReportEditView import ReportEditView
 import numpy as np
 import pandas as pd
-
+from CSVWriter import CSVWriter
 class ReportEditControl:
     def __init__(self, root):
         self.root = root
+        self.writer = CSVWriter()
+        self.reader = CSVReader()
         
     def startActivity(self):
         self.views = ReportEditView(self, self.root)
@@ -22,36 +24,71 @@ class ReportEditControl:
             newActivity.startActivity()
 
     def readCsv(self, filename):
-        reader = CSVReader()
-        self.filelist = reader.read(filename)
+        
+        self.curFile = filename
+        self.filelist = self.reader.read(filename)
         #TODO: Create proper VFTReport objects
         namelist = [i.getFileName() for i in self.filelist]
         self.views.displayReportList(namelist)
     
     def displayReport(self, index):
-        report = self.filelist[index]
-        self.views.GHT.set(report.results.getGHT())
-        self.views.VFI.set(report.results.getVFI())
-        self.views.MD.set(report.results.getMD())
-        self.views.MDp.set(report.results.getMDp())
-        self.views.PSD.set(report.results.getPSD())
-        self.views.PSDp.set(report.results.getPSDp())   
-        self.views.patientName.set(report.getFileName())
-        self.views.patientEye.set(report.patientData.getEyeSide())
-        self.views.patientTestDate.set(report.patientData.getDatetime())
-        self.views.duration.set(report.reliability.getTestDuration())
-        self.views.FIXLOS.set(report.reliability.getFIXLOS())
-        self.views.FPR.set(report.reliability.getFPR())
-        self.views.FNR.set(report.reliability.getFNR())
-        self.views.pattern.set(report.params.getPattern())
-        self.views.background.set(report.params.getBackground())
-        self.views.stimulus.set(report.params.getStimulus())
-        self.views.strategy.set(report.params.getStrategy())
-        self.views.sensitivityGraph.setVariables(report.sensitivityGraph.getValues(), report.patientData.getEyeSide())
-        self.views.totalDeviationGraph.setVariables(report.MDGraph.getValues(), report.patientData.getEyeSide())
-        self.views.patternDeviationGraph.setVariables(report.PSDGraph.getValues(), report.patientData.getEyeSide())
-
+        self.curReport = self.filelist[index]
         
+        self.views.GHT.set(self.curReport.results.getGHT())
+        self.views.VFI.set(self.curReport.results.getVFI())
+        self.views.MD.set(self.curReport.results.getMD())
+        self.views.MDp.set(self.curReport.results.getMDp())
+        self.views.PSD.set(self.curReport.results.getPSD())
+        self.views.PSDp.set(self.curReport.results.getPSDp())   
+        self.views.patientName.set(self.curReport.getFileName())
+        self.views.patientEye.set(self.curReport.patientData.getEyeSide())
+        self.views.patientTestDate.set(self.curReport.patientData.getDatetime())
+        self.views.duration.set(self.curReport.reliability.getTestDuration())
+        self.views.FIXLOS.set(self.curReport.reliability.getFIXLOS())
+        self.views.FPR.set(self.curReport.reliability.getFPR())
+        self.views.FNR.set(self.curReport.reliability.getFNR())
+        self.views.pattern.set(self.curReport.params.getPattern())
+        self.views.background.set(self.curReport.params.getBackground())
+        self.views.stimulus.set(self.curReport.params.getStimulus())
+        self.views.strategy.set(self.curReport.params.getStrategy())
+        self.views.sensitivityGraph.setVariables(self.curReport.sensitivityGraph.getValues(), self.curReport.patientData.getEyeSide())
+        self.views.totalDeviationGraph.setVariables(self.curReport.MDGraph.getValues(), self.curReport.patientData.getEyeSide())
+        self.views.patternDeviationGraph.setVariables(self.curReport.PSDGraph.getValues(), self.curReport.patientData.getEyeSide())
+
+    def update(self):
+        pass
+    
+    def saveReport(self):
+        print(self.views.pattern.get())
+        print("At savereport in ReportEditControl")
+        newReport = VFTReport(
+            self.curReport.getFileName(),
+            self.views.patientEye.get(),
+            self.views.patientTestDate.get(),
+            self.curReport.getPatientData().getAge(),
+            self.curReport.getPatientData().getID(),
+            self.views.FIXLOS.get(),
+            self.views.FNR.get(),
+            self.views.FPR.get(),
+            self.views.duration.get(),
+            self.views.GHT.get(),
+            self.views.VFI.get(),
+            self.views.MD.get(),
+            self.views.MDp.get(),
+            self.views.PSD.get(),
+            self.views.PSDp.get(),
+            self.views.pattern.get(),
+            self.views.strategy.get(),
+            self.views.stimulus.get(),
+            self.views.background.get(),
+            self.curReport.getFoveaRefdB(),
+            self.views.sensitivityGraph.getVariables(),
+            self.views.totalDeviationGraph.getVariables(),
+            self.views.patternDeviationGraph.getVariables(),
+            True
+        )
+
+        self.writer.update(newReport, self.curFile)
         
 
 

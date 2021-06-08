@@ -3,7 +3,7 @@ from tkinter import *
 from tkinter import filedialog
 from tkinter.font import families
 from typing import Dict, Optional
-import Constants
+
 from math import floor
 
 import string
@@ -40,6 +40,7 @@ class NumDbGraphView(Frame):
                     result[i][j] = None
                 else:
                     result[i][j] = self.entryVariables[i][j].get()
+        return result
 
     def setVariables(self, new_matrix, eye):
 
@@ -84,7 +85,7 @@ class ReportEditView:
         self.reportSelectionHeader.pack(fill = "x", expand= True, pady=10)
         self.reportSelectionHeader.place(relx = 0.5, anchor = "n")
 
-        self.reportSelectionList = Listbox(self.reportSelectionContainer)
+        self.reportSelectionList = Listbox(self.reportSelectionContainer, exportselection=False)
         self.vsb = Scrollbar(self.reportSelectionList, command=self.reportSelectionList.yview, orient="vertical")
         self.reportSelectionList.configure(yscrollcommand=self.vsb.set)
         self.hsb = Scrollbar(self.reportSelectionList, command=self.reportSelectionList.xview, orient="horizontal")
@@ -95,7 +96,7 @@ class ReportEditView:
         self.reportSelectionList.bind("<<ListboxSelect>>", self.onSelectReport)
 
         
-        self.commitButton = Button(self.main, text = "Commit")
+        self.commitButton = Button(self.main, text = "Commit", command= self.commit)
         self.commitButton.place(anchor = "n",relx= 0.07, rely = 0.6)
 
         self.loadButton = Button(self.main, text = "Load", command = self.loadStudy)
@@ -254,6 +255,7 @@ class ReportEditView:
         selection = event.widget.curselection()
         if selection:
             index = selection[0]
+            
             self.control.displayReport(index)
 
     def back(self):
@@ -270,6 +272,8 @@ class ReportEditView:
         for i in range(len(namelist)):
             self.reportSelectionList.insert(i, namelist[i])
     
+    def commit(self):
+        self.control.saveReport()
 
     
 

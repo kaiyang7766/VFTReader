@@ -17,7 +17,9 @@ class CSVReader(ReportReader):
                     row["Name"],
                     row["Eye"],
                     row["Visit"], 
-                    random.randint(20, 80), #TODO: Replace age
+                    random.randint(20, 80),
+                    row["ID"],
+                     #TODO: Replace age
                     row["FixLos"], 
                     row["FNRate"], 
                     row["FPRate"], 
@@ -31,7 +33,8 @@ class CSVReader(ReportReader):
                     row["Pattern"], 
                     row["Strategy"], 
                     row["Stimulus"], 
-                    row["Background"], 
+                    row["Background"],
+                    row["FoveaRefdB"],
                     self.readNumDb([row["T" + str(i)] for i in range(1, 77)], row["Eye"]),
                     self.readNumDb([row["MD" + str(i)] for i in range(1, 77)], row["Eye"]),
                     self.readNumDb([row["PSD" + str(i)] for i in range(1, 77)], row["Eye"]),

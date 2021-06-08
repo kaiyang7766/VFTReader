@@ -52,6 +52,10 @@ class WelcomeView:
     def onExtractRequest(self):
         self.control.extract(self.inputPath.get())
 
+    def onFinishExtraction(self):
+        file = filedialog.asksaveasfile(filetypes = ("CSV Document", "*.csv"), defaultextension = ("CSV Document", "*.csv"))
+        return file
+        
     def start(self)-> None:
         pass
 
