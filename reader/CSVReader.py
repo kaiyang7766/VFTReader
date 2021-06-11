@@ -1,6 +1,6 @@
 import random
 from models.VFTReport import VFTReport
-from ReportReader import ReportReader
+from reader.ReportReader import ReportReader
 import csv
 class CSVReader(ReportReader):
     #TODO: None
@@ -38,7 +38,7 @@ class CSVReader(ReportReader):
                     self.readNumDb([row["T" + str(i)] for i in range(1, 77)], row["Eye"]),
                     self.readNumDb([row["MD" + str(i)] for i in range(1, 77)], row["Eye"]),
                     self.readNumDb([row["PSD" + str(i)] for i in range(1, 77)], row["Eye"]),
-                    False
+                    row["checked"]
                     ))
                 line_count += 1
 

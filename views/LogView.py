@@ -1,6 +1,6 @@
 
 from tkinter import *
-
+from datetime import datetime
 class LogView(Frame):
     def __init__(self, parent):
         Frame.__init__(self, parent)
@@ -11,12 +11,11 @@ class LogView(Frame):
         self.vsb.pack(side="right", fill="y")
         self.text.pack(side="left", fill="both", expand=True)
 
-        self.text.tag_configure("even", background="#AAAAAA")
-        self.text.tag_configure("odd", background="#FFFFFF")
+        self.text.tag_configure("n", background="#AAAAAA")
+        self.text.tag_configure("e", background="#FFFFFF")
         self.pack()
-        with open(__file__, "r") as f:
-            tag = "odd"
-            for line in f.readlines():
-                self.text.insert("end", line, tag)
-                tag = "even" if tag == "odd" else "odd"
         
+            
+    def print(self, text, tag = "n"):
+        text =  ">>[" + datetime.now().strftime("%m/%d/%Y, %H:%M:%S") + "] " + text
+        self.text.insert("end", text, tag)

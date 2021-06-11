@@ -48,12 +48,11 @@ class WelcomeView:
     def onBrowseDirectory(self)->None:
         path = filedialog.askdirectory()
         self.inputPath.set(path)
-
     def onExtractRequest(self):
         self.control.extract(self.inputPath.get())
 
     def onFinishExtraction(self):
-        file = filedialog.asksaveasfile(filetypes = ("CSV Document", "*.csv"), defaultextension = ("CSV Document", "*.csv"))
+        file = filedialog.asksaveasfilename(filetypes = (("CSV Files","*.csv"),), defaultextension = ".csv")
         return file
         
     def start(self)-> None:

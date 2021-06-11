@@ -20,7 +20,8 @@ class VFTReport:
         self.PSDGraph = NumDbGraph(PSDGraphValues)
     def isChecked(self):
         return self.checked
-
+    def checked(self):
+        self.checked = True
     def getFileName(self):
         return self.fileName
 
@@ -130,4 +131,6 @@ class VFTReport:
                         else:
                             result["PSD" + str(index)] = self.PSDGraph.getValues()[i][j]
                         index +=1
+
+        result["checked"] = self.isChecked()
         return result

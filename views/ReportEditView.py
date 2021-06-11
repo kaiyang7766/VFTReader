@@ -93,6 +93,7 @@ class ReportEditView:
         self.reportSelectionList.pack(fill = "both", pady= 5)
         self.reportSelectionList.place(relwidth= 1, relheight=0.95, rely = 0.15)
         #TODO: Replace with proper logic
+        
         self.reportSelectionList.bind("<<ListboxSelect>>", self.onSelectReport)
 
         
@@ -255,7 +256,6 @@ class ReportEditView:
         selection = event.widget.curselection()
         if selection:
             index = selection[0]
-            
             self.control.displayReport(index)
 
     def back(self):
@@ -273,7 +273,11 @@ class ReportEditView:
             self.reportSelectionList.insert(i, namelist[i])
     
     def commit(self):
-        self.control.saveReport()
+        if self.control.saveReport():
+            index = self.reportSelectionList.curselection()
+            self.reportSelectionList.itemconfig(index, {'bg': 'green'})
+        
+            
 
     
 
