@@ -1,4 +1,4 @@
-from ReportEditControl import ReportEditControl
+from control.ReportEditControl import ReportEditControl
 from tkinter import *
 from tkinter.font import families
 import Constants

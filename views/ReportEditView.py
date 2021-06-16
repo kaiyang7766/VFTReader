@@ -25,8 +25,7 @@ class NumDbGraphView(Frame):
                     self.entryViews[i][j] = None
                 else:
                     self.entryViews[i][j] = Entry(self, textvariable= self.entryVariables[i][j])
-                    self.entryViews[i][j].configure(state = DISABLED)
-                    self.entryViews[i][j].place(relwidth= 0.07, relheight= 0.07, relx =0.03 + 0.1 * i , rely =0.03+ 0.1 * j)
+                    self.entryViews[i][j].place(relwidth= 0.07, relheight= 0.07, relx =0.03 + 0.1 * j , rely =0.03+ 0.1 * i)
     
     def setTitle(self, title):
         self.title = Label(self, text = title)
@@ -42,32 +41,17 @@ class NumDbGraphView(Frame):
                     result[i][j] = self.entryVariables[i][j].get()
         return result
 
-    def setVariables(self, new_matrix, eye):
-
-        if eye.lower() == "right":
-            for i  in range(10):
-                for j in range(10):
-                    if i + j <=2 or i+j >=16 or i - j >= 7 or j - i >=7:
-                        self.entryVariables[i][j] = None
-                    elif new_matrix[i][j] == None:
-                        self.entryVariables[i][j].set("")
-                        self.entryViews[i][j].configure(state = DISABLED)
-                    else:
-                        self.entryViews[i][j].configure(state = NORMAL)
-                        self.entryVariables[i][j].set(str(new_matrix[i][j]))
-        else:
-            for i in range(10):
-                    for j in range(9, -1, -1):
-                        if i + j <=2 or i+j >=16 or i - j >= 7 or j - i >=7:
-                            self.entryVariables[i][j] = None
-                        elif new_matrix[i][j] == None:
-                            self.entryVariables[i][j].set("")
-                            self.entryViews[i][j].configure(state = DISABLED)
-                        else:
-                            self.entryViews[i][j].configure(state = NORMAL)
-                            self.entryVariables[i][j].set(str(new_matrix[i][j]))
+    def setVariables(self, new_matrix):
         
-
+        for i  in range(10):
+            for j in range(10):
+                if i + j <=2 or i+j >=16 or i - j >= 7 or j - i >=7:
+                    self.entryVariables[i][j] = None
+                elif new_matrix[i][j] == None:
+                    self.entryVariables[i][j].set("")
+                else:
+                    self.entryViews[i][j].configure(state = NORMAL)
+                    self.entryVariables[i][j].set(str(new_matrix[i][j]))
 
 
 class ReportEditView:
@@ -268,14 +252,17 @@ class ReportEditView:
         self.reportSelectionList.delete(0, END)
         self.control.readCsv(path)
 
-    def displayReportList(self, namelist):
+    def displayReportList(self, namelist, checklist):
         for i in range(len(namelist)):
             self.reportSelectionList.insert(i, namelist[i])
+        for i in range(len(checklist)):
+            if int(checklist[i]) == 1 :
+                self.reportSelectionList.itemconfig(i, {'bg': 'green'})
     
     def commit(self):
-        if self.control.saveReport():
-            index = self.reportSelectionList.curselection()
-            self.reportSelectionList.itemconfig(index, {'bg': 'green'})
+        self.control.saveReport()
+        index = self.reportSelectionList.curselection()
+        self.reportSelectionList.itemconfig(index, {'bg': 'green'})
         
             
 

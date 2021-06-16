@@ -1,7 +1,8 @@
 
 class ReliabilityMetrics:
-    def __init__(self, FIXLOS, FNR, FPR, testDuration):
+    def __init__(self, FIXLOS,FIXTST, FNR, FPR, testDuration):
         self.FIXLOS = FIXLOS
+        self.FIXTST = FIXTST
         self.FNR = FNR
         self.FPR = FPR
         self.testDuration = testDuration
@@ -9,6 +10,8 @@ class ReliabilityMetrics:
     def getFIXLOS(self):
         return self.FIXLOS
 
+    def getFIXTST(self):
+        return self.FIXTST
     def getFNR(self):
         return self.FNR
 
@@ -20,6 +23,8 @@ class ReliabilityMetrics:
     def setFIXLOS(self, FIXLOS):
         self.FIXLOS = FIXLOS
 
+    def setFIXTST(self, FIXTST):
+        self.FIXTST = FIXTST
     def setFNR(self, FNR):
         self.FNR = FNR
 

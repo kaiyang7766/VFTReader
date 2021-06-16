@@ -1,7 +1,6 @@
-from WelcomeControl import WelcomeControl
+from control.WelcomeControl import WelcomeControl
 from tkinter import Tk
 import Constants
-from WelcomeControl import WelcomeControl
 import Log
 
 main_window = Tk(className= Constants.PROJECT_NAME)

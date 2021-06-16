@@ -11,11 +11,12 @@ class LogView(Frame):
         self.vsb.pack(side="right", fill="y")
         self.text.pack(side="left", fill="both", expand=True)
 
-        self.text.tag_configure("n", background="#AAAAAA")
-        self.text.tag_configure("e", background="#FFFFFF")
+        self.text.tag_configure("n", foreground="#000000")
+        self.text.tag_configure("e", foreground="#FF0000")
         self.pack()
         
             
     def print(self, text, tag = "n"):
         text =  ">>[" + datetime.now().strftime("%m/%d/%Y, %H:%M:%S") + "] " + text
         self.text.insert("end", text, tag)
+        self.text.insert("end", "\n", tag)

@@ -17,10 +17,11 @@ class CSVReader(ReportReader):
                     row["Name"],
                     row["Eye"],
                     row["Visit"], 
-                    random.randint(20, 80),
+                    random.randint(20, 80),#TODO: Replace age
                     row["ID"],
-                     #TODO: Replace age
+                    
                     row["FixLos"], 
+                    row["FixTst"],
                     row["FNRate"], 
                     row["FPRate"], 
                     row["Duration"], 
@@ -49,8 +50,8 @@ class CSVReader(ReportReader):
         graph = [[0 for i in range(10)] for j in range(10)]
 
         if eye.lower() == "right":
-            for j in range(10):
-                for i in range(10):
+            for i in range(10):
+                for j in range(10):
                     if i + j <=2 or i+j >=16 or i - j >= 7 or j - i >=7:
                         graph[i][j] = None
                     else:
@@ -62,8 +63,8 @@ class CSVReader(ReportReader):
                         index +=1
 
         else:
-            for j in range(10):
-                for i in range(9, -1, -1):
+            for i in range(10):
+                for j in range(9, -1, -1):
                     if i + j <=2 or i+j >=16 or i - j >= 7 or j - i >=7:
                         graph[i][j] = None
                     else:
@@ -73,4 +74,6 @@ class CSVReader(ReportReader):
                             graph[i][j] = row[index]
                         
                         index +=1
+        
+
         return graph
