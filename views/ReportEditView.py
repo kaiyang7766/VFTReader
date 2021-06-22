@@ -42,7 +42,6 @@ class NumDbGraphView(Frame):
         return result
 
     def setVariables(self, new_matrix):
-        
         for i  in range(10):
             for j in range(10):
                 if i + j <=2 or i+j >=16 or i - j >= 7 or j - i >=7:
@@ -50,8 +49,39 @@ class NumDbGraphView(Frame):
                 elif new_matrix[i][j] == None:
                     self.entryVariables[i][j].set("")
                 else:
-                    self.entryViews[i][j].configure(state = NORMAL)
                     self.entryVariables[i][j].set(str(new_matrix[i][j]))
+
+        
+    def showWarning(self,eye,  blindspot):
+        missing = False
+        if eye.lower() == "right":
+            for i  in range(10):
+                for j in range(10):
+                    if i + j <=3 or i+j >=15 or i - j >= 6 or j - i >=6 or i == 0 or i == 9 or j == 9:
+                        continue
+                    elif blindspot:
+                        if (i, j) == (4, 7) or (i, j) == (5, 7):
+                            self.entryViews[i][j].config(bg = "white")
+                        elif self.entryVariables[i][j].get() == "":
+                            self.entryViews[i][j].config(bg = "#FFF284")
+                            missing = True
+                        else:
+                            self.entryViews[i][j].config(bg = "white")
+        
+        else:
+            for i  in range(10):
+                for j in range(10):
+                    if i + j <=3 or i+j >=15 or i - j >= 6 or j - i >=6 or i == 0 or i == 9 or j == 0:
+                        continue
+                    elif blindspot:
+                        if (i, j) == (4, 2) or (i, j) == (5, 2):
+                            continue
+                        elif self.entryVariables[i][j].get() == "":
+                            self.entryViews[i][j].config(bg = "#FFF284")
+                            missing = True
+                        else:
+                            self.entryViews[i][j].config(bg = "white")
+        return missing
 
 
 class ReportEditView:
@@ -137,28 +167,39 @@ class ReportEditView:
         self.PSDpvalueEntry.pack(side = "left", padx= 10) 
 
         self.patientFrame = Frame(self.root, highlightbackground="black", highlightthickness=1)
-        self.patientFrame.place(relwidth = 0.25,relheight= 0.13, relx = 0.35, rely = 0.03)
+        self.patientFrame.place(relwidth = 0.25,relheight= 0.15, relx = 0.35, rely = 0.03)
         self.patientLabel = Label(self.patientFrame,text="Patient", highlightbackground="black", highlightthickness=1)
         self.patientLabel.pack(side = "top")
 
         self.patientName = StringVar()
         self.patientNameLabel = Label(self.patientFrame, text = "Name:", font = ("Arial", 8))
-        self.patientNameLabel.place(relx = 0.05, rely = 0.35)
+        self.patientNameLabel.place(relx = 0.05, rely = 0.25)
         self.patientNameEntry = Entry(self.patientFrame, textvariable = self.patientName)
-        self.patientNameEntry.place(relx = 0.3, rely = 0.35, relwidth= 0.5) 
+        self.patientNameEntry.place(relx = 0.2, rely = 0.25, relwidth= 0.6) 
 
         self.patientEye = StringVar()
         self.patientEyeLabel = Label(self.patientFrame, text = "Eye:", font = ("Arial", 8))
-        self.patientEyeLabel.place(relx = 0.05, rely = 0.65)
+        self.patientEyeLabel.place(relx = 0.05, rely = 0.50)
         self.patientEyeEntry = Entry(self.patientFrame, textvariable = self.patientEye)
-        self.patientEyeEntry.place(relx = 0.2, rely = 0.65, relwidth= 0.15) 
+        self.patientEyeEntry.place(relx = 0.2, rely = 0.50, relwidth= 0.15) 
 
         self.patientTestDate = StringVar()
         self.patientTestDateLabel = Label(self.patientFrame, text = "Date:", font = ("Arial", 8))
-        self.patientTestDateLabel.place(relx = 0.45, rely = 0.65)
+        self.patientTestDateLabel.place(relx = 0.45, rely = 0.50)
         self.patientTestDateEntry = Entry(self.patientFrame, textvariable = self.patientTestDate)
-        self.patientTestDateEntry.place(relx = 0.6, rely = 0.65, relwidth= 0.3) 
+        self.patientTestDateEntry.place(relx = 0.6, rely = 0.50, relwidth= 0.3) 
 
+        self.patientAge = StringVar()
+        self.patientAgeLabel = Label(self.patientFrame, text = "Age:", font = ("Arial", 8))
+        self.patientAgeLabel.place(relx = 0.05, rely = 0.75)
+        self.patientAgeEntry = Entry(self.patientFrame, textvariable = self.patientAge)
+        self.patientAgeEntry.place(relx = 0.2, rely = 0.75, relwidth= 0.1) 
+
+        self.patientBirthDate = StringVar()
+        self.patientBirthDateLabel = Label(self.patientFrame, text = "Date of Birth:", font = ("Arial", 8))
+        self.patientBirthDateLabel.place(relx = 0.4, rely = 0.75)
+        self.patientBirthDateEntry = Entry(self.patientFrame, textvariable = self.patientBirthDate)
+        self.patientBirthDateEntry.place(relx = 0.6, rely = 0.75, relwidth= 0.3) 
     
         self.settingsFrame = Frame(self.root, highlightbackground="black", highlightthickness=1)
         self.settingsFrame.place(relwidth = 0.25,relheight= 0.13, relx = 0.35, rely = 0.2)
@@ -197,7 +238,7 @@ class ReportEditView:
 
         self.reliabilityMetricsFrame = Frame(self.root, highlightbackground="black", highlightthickness=1)
         self.reliabilityMetricsFrame.place(relwidth = 0.25,relheight= 0.13, relx = 0.35, rely = 0.35)
-        self.reliabilityMetricsLabel = Label(self.reliabilityMetricsFrame,text="Settings", highlightbackground="black", highlightthickness=1)
+        self.reliabilityMetricsLabel = Label(self.reliabilityMetricsFrame,text="Reliability Metrics", highlightbackground="black", highlightthickness=1)
         self.reliabilityMetricsLabel.pack(side = "top")
 
         self.FIXLOS = StringVar()
@@ -224,8 +265,6 @@ class ReportEditView:
         self.FNREntry = Entry(self.reliabilityMetricsFrame, textvariable = self.FNR)
         self.FNREntry.place(relx = 0.70, rely = 0.65, relwidth= 0.25) 
 
-
-
         self.totalDeviationGraph = NumDbGraphView(self.main)
         self.totalDeviationGraph.place(relheight=0.40, relwidth= 0.30, relx = 0.35, rely = 0.55)
         self.totalDeviationGraph.fill()
@@ -235,7 +274,52 @@ class ReportEditView:
         self.patternDeviationGraph.place(relheight=0.40, relwidth= 0.30, relx = 0.70, rely = 0.55)
         self.patternDeviationGraph.fill()
         self.patternDeviationGraph.setTitle("Pattern deviation")
-        
+
+        self.entries = {
+            "VFI": self.VFIEntry,
+            "GHT": self.GHTEntry,
+            "MD": self.MDEntry,
+            "MDp": self.MDpvalueEntry,
+            "PSD": self.PSDEntry,
+            "PSDp": self.PSDpvalueEntry,
+            "Name": self.patientNameEntry,
+            "Eye": self.patientEyeEntry,
+            "Visit": self.patientTestDateEntry,
+            "Age": self.patientAgeEntry,
+            "Date of Birth": self.patientBirthDateEntry,
+            "Stimulus":self.settingsStimulusEntry,
+            "Strategy":self.settingsStrategyEntry,
+            "Pattern": self.settingsPatternEntry,
+            "Background": self.settingsBackgroundEntry,
+            "FIXLOS": self.FIXLOSEntry,
+            "Duration": self.durationEntry,
+            "FNR": self.FNREntry,
+            "FPR": self.FPREntry,
+        }
+        self.variables ={
+            "VFI": self.VFI,
+            "GHT": self.GHT,
+            "MD": self.MD,
+            "MDp": self.MDp,
+            "PSD": self.PSD,
+            "PSDp": self.PSDp,
+            "Name": self.patientName,
+            "Eye": self.patientEye,
+            "Visit": self.patientTestDate,
+            "Age": self.patientAge,
+            "Date of Birth": self.patientBirthDate,
+            "Stimulus":self.stimulus,
+            "Strategy":self.strategy,
+            "Pattern": self.pattern,
+            "Background": self.background,
+            "FIXLOS": self.FIXLOS,
+            "Duration": self.duration,
+            "FNR": self.FNR,
+            "FPR": self.FPR,
+        }
+
+
+
     def onSelectReport(self, event):
         selection = event.widget.curselection()
         if selection:
@@ -260,11 +344,24 @@ class ReportEditView:
                 self.reportSelectionList.itemconfig(i, {'bg': 'green'})
     
     def commit(self):
-        self.control.saveReport()
-        index = self.reportSelectionList.curselection()
-        self.reportSelectionList.itemconfig(index, {'bg': 'green'})
+        if self.control.saveReport():
+            index = self.reportSelectionList.curselection()
+            self.reportSelectionList.itemconfig(index, {'bg': 'green'})
         
-            
+    def showWarning(self):
+        missing= False
+        for k,v in self.entries.items():
+            if self.variables[k].get() == "":
+                v.config(bg="#FFF284")
+                missing = True
+            else:
+                v.config(bg = "white")
+        if self.sensitivityGraph.showWarning(self.patientEye.get(), False) or self.totalDeviationGraph.showWarning(self.patientEye.get(), True) or self.totalDeviationGraph.showWarning(self.patientEye.get(), True):
+            missing = True
+        
+        return missing
+
+        
 
     
 

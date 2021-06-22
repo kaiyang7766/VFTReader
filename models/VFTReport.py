@@ -6,9 +6,9 @@ from models.PatientData import PatientData
 from models.VFTResults import VFTResults
 
 class VFTReport:
-    def __init__(self, fileName, eyeSide, datetime, age, ID, FIXLOS, FIXTST, FNR, FPR, testDuration, GHT, VFI, MD, MDp, PSD, PSDp,  pattern, strategy, stimulus, background, foveaRefdB ,SGraphvalues, MDGraphValues, PSDGraphValues, checked):
+    def __init__(self, fileName, name, eyeSide, datetime, age, dob, ID, FIXLOS, FIXTST, FNR, FPR, testDuration, GHT, VFI, MD, MDp, PSD, PSDp,  pattern, strategy, stimulus, background, foveaRefdB ,SGraphvalues, MDGraphValues, PSDGraphValues, checked):
         self.fileName = fileName
-        self.patientData = PatientData(eyeSide, datetime, age, ID)
+        self.patientData = PatientData(name, eyeSide, datetime, age, dob, ID)
         self.params = VFTParams(pattern, strategy, stimulus, background)
         self.results = VFTResults(GHT, VFI, MD, MDp, PSD, PSDp)
         self.reliability = ReliabilityMetrics(FIXLOS, FIXTST, FNR, FPR, testDuration)
@@ -43,7 +43,10 @@ class VFTReport:
     def toDict(self):
         result =   {
                     "ID": self.getPatientData().getID(),
-                    "Name": self.getFileName(),
+                    "File name": self.getFileName(),
+                    "Name": self.getPatientData().getName(),
+                    'Date of Birth':self.getPatientData().getDOB(),
+                    'Age':self.getPatientData().getAge(),
                     "Visit": self.getPatientData().getDatetime(),
                     "Eye": self.getPatientData().getEyeSide(),
                     "Pattern": self.getTestParams().getPattern(),
@@ -64,6 +67,8 @@ class VFTReport:
                     "FoveaRefdB": self.getFoveaRefdB()
                 }
         if result["Eye"].lower() == "right":
+            print(result["Eye"])
+            print(result["Eye"].lower())
             index = 1
             for i in range(10):
                 for j in range(10):

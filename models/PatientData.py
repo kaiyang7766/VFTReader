@@ -1,11 +1,18 @@
 
+from os import name
+
+
 class PatientData:
-    def __init__(self, eyeSide, datetime, age, ID):
+    def __init__(self, name ,eyeSide, datetime, age, dob, ID):
         self.eyeSide = eyeSide
         self.datetime = datetime
         self.age = age
         self.ID = ID
+        self.dob = dob
+        self.name = name
+
         
+  
 
     def setID(self, ID):
         self.ID = ID
@@ -18,6 +25,10 @@ class PatientData:
     def setAge(self,age):
         self.age = age
 
+    def getName(self):
+        return self.name
+    def getDOB(self):
+        return self.dob
     def getID(self):
         return self.ID
 

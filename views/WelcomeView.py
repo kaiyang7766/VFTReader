@@ -17,19 +17,18 @@ class WelcomeView:
         
         self.inputFrame = Frame(self.main)
         self.inputFrame.pack(fill = "x")
-        self.inputFrame.place(relx= 0, rely = 0.4, relwidth= 1)
+        self.inputFrame.place(relx= 0.1, rely = 0.4, relwidth= 0.80, relheight = 0.2)
 
         self.inputHint = Label(self.inputFrame, text="Input directory: ", padx = 30)
-        self.inputHint.pack(side = "left")
+        self.inputHint.place(relx = 0)
         
-        #TODO: Create logic for default path 
         self.inputPath = StringVar()
-        self.inputPath.set("This is a default path")
-        self.inputPathEntry = Entry(self.inputFrame, textvariable= self.inputPath, width= 70)
-        self.inputPathEntry.pack(fill = "y", side = "left", expand= False)
+        self.inputPath.set("")
+        self.inputPathEntry = Entry(self.inputFrame, textvariable= self.inputPath)
+        self.inputPathEntry.place(relx = 0.2, relwidth = 0.6)
 
         self.browseInputDir = Button(self.inputFrame, text= "Browse", command = self.onBrowseDirectory)
-        self.browseInputDir.pack(fill = "y", side = "left", expand= False, padx= 10)
+        self.browseInputDir.place(relx = 0.85)
         
         self.extractButton = Button(self.main, text = "Extract", command = self.onExtractRequest)
         self.extractButton.pack(side = "bottom", expand = True)
@@ -39,7 +38,7 @@ class WelcomeView:
         self.continueButton.pack(side = "bottom", expand = True)
         self.continueButton.place(anchor = "n", relx = 0.5, rely = 0.7)
         self.start()
-    
+        
     def onNextActivity(self):
         self.main.destroy()
         new = ReportEditControl(self.root)
@@ -54,7 +53,10 @@ class WelcomeView:
     def onFinishExtraction(self):
         file = filedialog.asksaveasfilename(filetypes = (("CSV Files","*.csv"),), defaultextension = ".csv")
         return file
-        
+    def disableExtraction(self):
+        self.extractButton.config(state= DISABLED)
+    def enableExtraction(self):
+        self.extractButton.config(state= NORMAL)
     def start(self)-> None:
         pass
 

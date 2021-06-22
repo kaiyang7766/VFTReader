@@ -8,10 +8,13 @@ def init(root):
     views = LogView(root)
     views.print("Welcome to VFT report reader!")
 def n(text):
-    views.print(text, "n")
-    
-    
+    try:
+        views.print(text, "n")
+    except:
+        print(text)
 def e(text):
-    views.print(text, "e")
-    
+    try:
+        views.print(text, "e")
+    except:
+        print(text)
 

@@ -1,9 +1,8 @@
+
 import traceback
-from control.ExtractionControl import ExtractionControl
+
 from typing import Text
 from reader.ReportReader import ReportReader
-from datetime import datetime
-from tkinter import EventType
 
 from models.VFTReport import VFTReport
 import pytesseract
@@ -13,13 +12,15 @@ import os
 import numpy as np
 import re
 from math import floor
-
-class PytesseractReader(ReportReader):
-
-    def __init__(self) -> None:
+from threading import Thread
+class PytesseractReader(ReportReader):    
+    def __init__(self, dir, curActivity) -> None:
         #TODO: Find a way to set the path for pytesseract
-        pytesseract.pytesseract.tesseract_cmd = "C:/Program Files/Tesseract-OCR/tesseract.exe"
-        self.poppler =  "C:/Users/HP - PC/Downloads/poppler-0.68.0_x86/poppler-0.68.0/bin"
+        Thread.__init__(self)
+        self.curActivity = curActivity
+        self.dir = dir
+        pytesseract.pytesseract.tesseract_cmd = "Tesseract-OCR/tesseract.exe"
+        self.poppler =  "poppler-0.68.0_x86/poppler-0.68.0/bin"
         self.patterns = {
             "Name": re.compile("Patient:\s*(.*)"),
             "Birth": re.compile("Date of Birth:\s*(.*)"),
@@ -34,51 +35,46 @@ class PytesseractReader(ReportReader):
             "Fovea": re.compile("Fovea:\s*(.*)"),
             "Pattern": re.compile(".*(\d\d\s*-\s*\d).*"),
             "Stimulus": re.compile("Stimulus:\s*(.*)\s*Date:.*"),
-            "Date": re.compile("Stimulus:.*Date:\s*(.*)\s*"),
+            "Date": re.compile("Date:\s*(.*)\s*"),
             "Background": re.compile("Background:\s*(.*)\s*Time:.*"),
-            "Time": re.compile("Background:.*Time:\s*(.*)\s*"),
+            "Time": re.compile("Time:\s*(.*)\s*"),
             "Strategy": re.compile("Strategy:\s*(.*)\s*Age:.*"),
             "Age": re.compile("Strategy:.*Age:\s*(.*)\s*"),
             "GHT": re.compile("GHT:\s*(.*)"),
             "VFI": re.compile("VFI:\s*(.*)"),
-            "MD": re.compile("MD\d+-\d+:\s*(.*)"),
+            "MD": re.compile("MD\d+-\d+:\s*(.*)dB"),
             "MDp": re.compile("MD\d+-\d+:\s*.*(P\s*<\s*.*%)"),
-            "PSD": re.compile("PSD\d+-\d+:\s*(.*)"),
+            "PSD": re.compile("PSD\d+-\d+:\s*(.*)dB"),
             "PSDp": re.compile("PSD\d+-\d+:\s*.*(P\s*<\s*.*%)"),
-            "Name": re.compile("Patient: (.*)")
         }
         self.values = {}
         self.numdB_pattern = re.compile('FIELD\s*(\S*)\s*FIELD')
-        
         self.numdB_aux = Image.open("numdB_aux.png")
-     
 
+    def run(self):
+        self.read()
     #report_height = 2340
     #report_width = 1655
-    def read(self, dir, curActivity: ExtractionControl):
+    def read(self):
         filelist = []
         reportList = []
-        self.curActivity = curActivity
-        for filename in os.listdir(dir):
+        for filename in os.listdir(self.dir):
             if filename.endswith(".Pdf"): 
-                filelist.append(filename) 
+                filelist.append(filename)
         length =len(filelist)
-        curActivity.logNumFiles(length)
+        self.curActivity.queueMessage("Found " + str(length) + " files with supported format in selected directory")
         i = 0
         for filename in filelist:
             try:
-
-                curActivity.logCurFile(filename, i, length)
                 i+=1
-                reportList.append(self.readfile(dir, filename))
-                curActivity.refresh()
-            except Exception as e:
-                curActivity.logError()
+                self.curActivity.queueMessage("(" + str(i) + '/' + str(length) + ')Processing ' + filename)
+                reportList.append(self.readfile(self.dir, filename))
+            except:
+                self.curActivity.queueError("An error has occured while processing file. Skipping to the next report")
                 traceback.print_exc()
-                
-            
-                
-        return reportList
+        self.curActivity.onFinishExtraction(reportList)
+        self.curActivity.queueMessage(0)
+
     def pdf_to_img(self, pdf_file):
         #TODO: Same for poppler
         return pdf2image.convert_from_path(pdf_file, poppler_path= self.poppler)
@@ -122,12 +118,17 @@ class PytesseractReader(ReportReader):
             eyeSide = "Right"
         elif "OS" in filename:
             eyeSide = "Left"
-        
+        else:
+            eyeSide = ""
         pdf_file = os.path.join(dir, filename)
-        images = self.pdf_to_img(pdf_file)
-        self.curActivity.refresh()
+        if filename.endswith(".Pdf"):
+            images = self.pdf_to_img(pdf_file)
+        
+        
         for pg, img in enumerate(images):
+            print(pg)
             arr = np.array(img)
+            
             #Crop graphs
             sensGraph = img.crop((361, 622, 852, 1115))
             MDGraph = img.crop((190, 1090, 518, 1416))
@@ -139,7 +140,7 @@ class PytesseractReader(ReportReader):
             MDGraph_arr = np.array(MDGraph)         
             PSDGraph_arr = np.array(PSDGraph)
             #Refresh is called to prevent "not responding" program
-            self.curActivity.refresh()
+            
 
             arr[0:230, 910:1150] = (255,255,255)
             arr[320:380, :1100] = (255, 255, 255)
@@ -147,15 +148,9 @@ class PytesseractReader(ReportReader):
             arr[1100:, :] = (255, 255, 255)
 
             cropped = Image.fromarray(arr)
-      
-            #main_pattern = re.compile('Patient: (.*)\n*Date of Birth: (.*)\n*Gender: (.*)\n*Patient ID: (.*)\n*Fixation Monitor: (.*)\n*Fixation Target: (.*)\n*Fixation Losses: (.*)\n*False POS Errors: (.*)\n*False NEG Errors: (.*)\n*Test Duration: (.*)\n*Fovea: (.*)\n*.*(\d\d\s*-\s*\d).*\n*Stimulus: (.*) Date: (.*)\n*Background: (.*) Time: (.*)\n*Strategy: (.*) Age: (.*)')
             main_text = self.ocr_core(cropped)
             print(main_text)
             
-            #Refresh is called to prevent "not responding" program
-            
-            self.curActivity.refresh()
-            #test_results_pattern = re.compile('GHT:\s*(.*)\n*VFI:\s*(.*)\n*MD\d+-\d+:\s*(.*)(P\s*<\s*.*%)\n*PSD\d+-\d+:\s*(.*)(P\s*<\s*.*%)')
             test_result_text = self.ocr_core(resultInfo)
             print(test_result_text)
             fulltext = main_text + "\n" + test_result_text
@@ -170,19 +165,14 @@ class PytesseractReader(ReportReader):
             except ValueError:
                 FIXLOS = self.values["FIXLOS"]
                 FIXTST = ""
-            #Refresh is called to prevent "not responding" program
-            self.curActivity.refresh()
-            return VFTReport(filename, eyeSide, self.values["Date"] + " " + self.values["Time"], self.values["Age"],self.values["ID"], FIXLOS, FIXTST, self.values["FNR"], self.values["FPR"], self.values["Duration"],self.values["GHT"], self.values["VFI"], self.values["MD"], self.values["MDp"], self.values["PSD"], self.values["PSDp"],  self.values["Pattern"], self.values["Strategy"], self.values["Stimulus"], self.values["Background"], self.values["Fovea"] ,self.image2data(sensGraph_arr), self.image2data(MDGraph_arr), self.image2data(PSDGraph_arr), 0)
+            return VFTReport(filename,self.values["Name"], eyeSide, self.values["Date"] + " " + self.values["Time"], self.values["Age"], self.values["Birth"], self.values["ID"], FIXLOS, FIXTST, self.values["FNR"], self.values["FPR"], self.values["Duration"],self.values["GHT"], self.values["VFI"], self.values["MD"], self.values["MDp"], self.values["PSD"], self.values["PSDp"],  self.values["Pattern"], self.values["Strategy"], self.values["Stimulus"], self.values["Background"], self.values["Fovea"] ,self.image2data(sensGraph_arr), self.image2data(MDGraph_arr), self.image2data(PSDGraph_arr), 0)
 
 
 
 
     def image2data(self, image):
-        
         image[(floor(image.shape[1]/2)-6):(floor(image.shape[1]/2)+6),:] = (255, 255, 255)
         image[:, (floor(image.shape[0]/2)-6):(floor(image.shape[0]/2)+6)] = (255, 255, 255)
-        
-
         
         index = 0
         arr = [[0 for i in range(10)] for j in range(10)]
@@ -211,9 +201,6 @@ class PytesseractReader(ReportReader):
                 else:
                     arr[i][j] = ""
 
-                
-            #Refresh is called to prevent "not responding" program
-            self.curActivity.refresh()
         for i in arr:
             print(i)
         print("\n"*3)

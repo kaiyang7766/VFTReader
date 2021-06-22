@@ -14,12 +14,13 @@ class CSVReader(ReportReader):
                     line_count += 1
                 
                 reportList.append(VFTReport(
+                    row["File name"],
                     row["Name"],
                     row["Eye"],
                     row["Visit"], 
-                    random.randint(20, 80),#TODO: Replace age
+                    row["Age"],
+                    row["Date of Birth"],
                     row["ID"],
-                    
                     row["FixLos"], 
                     row["FixTst"],
                     row["FNRate"], 
