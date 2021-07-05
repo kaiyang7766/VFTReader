@@ -35,6 +35,12 @@ class WelcomeControl(ExtractionControl):
         except PermissionError:
             self.logError("Selected location is not accessible, please select another location")
             self.saveReports()
+        except FileNotFoundError:
+            self.logError("Directory not found. Please try again.")
+        finally:
+            self.views.enableExtraction()
+        
+
     def onFinishSave(self):
         self.logMessage("Data saved successfully")
         self.views.enableExtraction()

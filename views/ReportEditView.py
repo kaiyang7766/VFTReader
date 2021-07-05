@@ -62,11 +62,12 @@ class NumDbGraphView(Frame):
                     elif blindspot:
                         if (i, j) == (4, 7) or (i, j) == (5, 7):
                             self.entryViews[i][j].config(bg = "white")
-                        elif self.entryVariables[i][j].get() == "":
-                            self.entryViews[i][j].config(bg = "#FFF284")
-                            missing = True
-                        else:
-                            self.entryViews[i][j].config(bg = "white")
+                            continue
+                    if self.entryVariables[i][j].get() == "":
+                        self.entryViews[i][j].config(bg = "#FFF284")
+                        missing = True
+                    else:
+                        self.entryViews[i][j].config(bg = "white")
         
         else:
             for i  in range(10):
@@ -75,12 +76,13 @@ class NumDbGraphView(Frame):
                         continue
                     elif blindspot:
                         if (i, j) == (4, 2) or (i, j) == (5, 2):
-                            continue
-                        elif self.entryVariables[i][j].get() == "":
-                            self.entryViews[i][j].config(bg = "#FFF284")
-                            missing = True
-                        else:
                             self.entryViews[i][j].config(bg = "white")
+                            continue
+                    if self.entryVariables[i][j].get() == "":
+                        self.entryViews[i][j].config(bg = "#FFF284")
+                        missing = True
+                    else:
+                        self.entryViews[i][j].config(bg = "white")
         return missing
 
 
@@ -356,9 +358,12 @@ class ReportEditView:
                 missing = True
             else:
                 v.config(bg = "white")
-        if self.sensitivityGraph.showWarning(self.patientEye.get(), False) or self.totalDeviationGraph.showWarning(self.patientEye.get(), True) or self.totalDeviationGraph.showWarning(self.patientEye.get(), True):
+        if self.sensitivityGraph.showWarning(self.patientEye.get(), False):
             missing = True
-        
+        if self.totalDeviationGraph.showWarning(self.patientEye.get(), True):
+            missing = True
+        if self.patternDeviationGraph.showWarning(self.patientEye.get(), True):
+            missing = True
         return missing
 
         

@@ -34,7 +34,7 @@ class WelcomeView:
         self.extractButton.pack(side = "bottom", expand = True)
         self.extractButton.place(anchor = "n",relx = 0.5, rely = 0.6)
         
-        self.continueButton = Button(self.main, text = "Continue", command = self.onNextActivity)
+        self.continueButton = Button(self.main, text = "Review", command = self.onNextActivity)
         self.continueButton.pack(side = "bottom", expand = True)
         self.continueButton.place(anchor = "n", relx = 0.5, rely = 0.7)
         self.start()
