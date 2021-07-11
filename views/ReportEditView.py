@@ -177,7 +177,7 @@ class ReportEditView:
         self.patientNameLabel = Label(self.patientFrame, text = "Name:", font = ("Arial", 8))
         self.patientNameLabel.place(relx = 0.05, rely = 0.25)
         self.patientNameEntry = Entry(self.patientFrame, textvariable = self.patientName)
-        self.patientNameEntry.place(relx = 0.2, rely = 0.25, relwidth= 0.6) 
+        self.patientNameEntry.place(relx = 0.2, rely = 0.25, relwidth= 0.7) 
 
         self.patientEye = StringVar()
         self.patientEyeLabel = Label(self.patientFrame, text = "Eye:", font = ("Arial", 8))
@@ -218,7 +218,7 @@ class ReportEditView:
         self.settingsStimulusLabel = Label(self.settingsFrame, text = "Stimulus:", font = ("Arial", 8))
         self.settingsStimulusLabel.place(relx = 0.45, rely = 0.35)
         self.settingsStimulusEntry = Entry(self.settingsFrame, textvariable = self.stimulus)
-        self.settingsStimulusEntry.place(relx = 0.65, rely = 0.35, relwidth= 0.3) 
+        self.settingsStimulusEntry.place(relx = 0.6, rely = 0.35, relwidth= 0.3) 
 
         self.strategy = StringVar()
         self.settingsStrategyLabel = Label(self.settingsFrame, text = "Strategy:", font = ("Arial", 7))
@@ -230,7 +230,7 @@ class ReportEditView:
         self.settingsBackgroundLabel = Label(self.settingsFrame, text = "Background:", font = ("Arial", 7))
         self.settingsBackgroundLabel.place(relx = 0.45, rely = 0.65)
         self.settingsBackgroundEntry = Entry(self.settingsFrame, textvariable = self.background)
-        self.settingsBackgroundEntry.place(relx = 0.70, rely = 0.65, relwidth= 0.25) 
+        self.settingsBackgroundEntry.place(relx = 0.60, rely = 0.65, relwidth= 0.3) 
 
         self.sensitivityGraph = NumDbGraphView(self.main)
         self.sensitivityGraph.place(relheight=0.40, relwidth= 0.30, relx = 0.66, rely = 0.03)
@@ -253,7 +253,7 @@ class ReportEditView:
         self.durationLabel = Label(self.reliabilityMetricsFrame, text = "Duration", font = ("Arial", 8))
         self.durationLabel.place(relx = 0.45, rely = 0.35)
         self.durationEntry = Entry(self.reliabilityMetricsFrame, textvariable=self.duration)
-        self.durationEntry.place(relx = 0.65, rely = 0.35, relwidth= 0.3) 
+        self.durationEntry.place(relx = 0.6, rely = 0.35, relwidth= 0.3) 
 
         self.FPR = StringVar()
         self.FPRLabel = Label(self.reliabilityMetricsFrame, text = "FPR", font = ("Arial", 7))
@@ -265,7 +265,7 @@ class ReportEditView:
         self.FNRLabel = Label(self.reliabilityMetricsFrame, text = "FNR", font = ("Arial", 7))
         self.FNRLabel.place(relx = 0.45, rely = 0.65)
         self.FNREntry = Entry(self.reliabilityMetricsFrame, textvariable = self.FNR)
-        self.FNREntry.place(relx = 0.70, rely = 0.65, relwidth= 0.25) 
+        self.FNREntry.place(relx = 0.60, rely = 0.65, relwidth= 0.3) 
 
         self.totalDeviationGraph = NumDbGraphView(self.main)
         self.totalDeviationGraph.place(relheight=0.40, relwidth= 0.30, relx = 0.35, rely = 0.55)

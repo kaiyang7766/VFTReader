@@ -39,7 +39,12 @@ class VFTReport:
 
     def getFoveaRefdB(self):
         return self.fovea    
-    
+    def getSensitivityGraph(self):
+        return self.getSensitivityGraph
+    def getMDGraph(self):
+        return self.MDGraph
+    def getPSDGraph(self):
+        return self.PSDGraph
     def toDict(self):
         result =   {
                     "ID": self.getPatientData().getID(),
@@ -67,8 +72,6 @@ class VFTReport:
                     "FoveaRefdB": self.getFoveaRefdB()
                 }
         if result["Eye"].lower() == "right":
-            print(result["Eye"])
-            print(result["Eye"].lower())
             index = 1
             for i in range(10):
                 for j in range(10):

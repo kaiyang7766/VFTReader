@@ -13,25 +13,25 @@ class PatientData:
 
         
   
-
+    def setName(self, name):
+        self.name = name
     def setID(self, ID):
         self.ID = ID
-
     def setEyeSide(self,eyeSide):
         self.eyeSide = eyeSide
-
     def setDatetime(self,datetime):
         self.datetime = datetime
     def setAge(self,age):
         self.age = age
-
+    def setDOB(self, dob):
+        self.dob = dob
+    
     def getName(self):
         return self.name
     def getDOB(self):
         return self.dob
     def getID(self):
         return self.ID
-
     def getEyeSide(self):
         return self.eyeSide
     def getDatetime(self):

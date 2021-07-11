@@ -19,8 +19,8 @@ class WelcomeView:
         self.inputFrame.pack(fill = "x")
         self.inputFrame.place(relx= 0.1, rely = 0.4, relwidth= 0.80, relheight = 0.2)
 
-        self.inputHint = Label(self.inputFrame, text="Input directory: ", padx = 30)
-        self.inputHint.place(relx = 0)
+        self.inputLabel = Label(self.inputFrame, text="Input directory: ", padx = 30)
+        self.inputLabel.place(relx = 0)
         
         self.inputPath = StringVar()
         self.inputPath.set("")
@@ -34,22 +34,21 @@ class WelcomeView:
         self.extractButton.pack(side = "bottom", expand = True)
         self.extractButton.place(anchor = "n",relx = 0.5, rely = 0.6)
         
-        self.continueButton = Button(self.main, text = "Review", command = self.onNextActivity)
-        self.continueButton.pack(side = "bottom", expand = True)
-        self.continueButton.place(anchor = "n", relx = 0.5, rely = 0.7)
+        self.reviewButton = Button(self.main, text = "Review", command = self.onNextActivity)
+        self.reviewButton.pack(side = "bottom", expand = True)
+        self.reviewButton.place(anchor = "n", relx = 0.5, rely = 0.7)
         self.start()
         
     def onNextActivity(self):
         self.main.destroy()
         new = ReportEditControl(self.root)
         new.startActivity()
-
+        
     def onBrowseDirectory(self)->None:
         path = filedialog.askdirectory()
         self.inputPath.set(path)
     def onExtractRequest(self):
         self.control.extract(self.inputPath.get())
-
     def onFinishExtraction(self):
         file = filedialog.asksaveasfilename(filetypes = (("CSV Files","*.csv"),), defaultextension = ".csv")
         return file

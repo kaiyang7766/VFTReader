@@ -21,35 +21,6 @@ class PytesseractReader(ReportReader):
         self.dir = dir
         pytesseract.pytesseract.tesseract_cmd = "Tesseract-OCR/tesseract.exe"
         self.poppler =  "poppler-0.68.0_x86/poppler-0.68.0/bin"
-        self.patterns = {
-            "Name": re.compile("Patient:\s*(.*)"),
-            "Birth": re.compile("Date of Birth:\s*(.*)"),
-            "Gender": re.compile("Gender:\s*(.*)"),
-            "ID": re.compile("Patient ID:\s*(.*)"),
-            #"FIXMON": re.compile("Fixation Monitor: (.*)"),
-            #"FIXTAR": re.compile("Fixation Target: (.*)"),
-            "FIXLOS": re.compile("Fixation Losses:\s*(.*)"),
-            "FPR": re.compile("False POS Errors:\s*(.*)"),
-            "Duration": re.compile("Test Duration: (.*)"),
-            "FNR": re.compile("False NEG Errors:\s*(.*)"),
-            "Fovea": re.compile("Fovea:\s*(.*)"),
-            "Pattern": re.compile(".*(\d\d\s*-\s*\d).*"),
-            "Stimulus": re.compile("Stimulus:\s*(.*)\s*Date:.*"),
-            "Date": re.compile("Date:\s*(.*)\s*"),
-            "Background": re.compile("Background:\s*(.*)\s*Time:.*"),
-            "Time": re.compile("Time:\s*(.*)\s*"),
-            "Strategy": re.compile("Strategy:\s*(.*)\s*Age:.*"),
-            "Age": re.compile("Strategy:.*Age:\s*(.*)\s*"),
-            "GHT": re.compile("GHT:\s*(.*)"),
-            "VFI": re.compile("VFI:\s*(.*)"),
-            "MD": re.compile("MD\d+-\d+:\s*(.*)dB"),
-            "MDp": re.compile("MD\d+-\d+:\s*.*(P\s*<\s*.*%)"),
-            "PSD": re.compile("PSD\d+-\d+:\s*(.*)dB"),
-            "PSDp": re.compile("PSD\d+-\d+:\s*.*(P\s*<\s*.*%)"),
-        }
-        self.values = {}
-        self.numdB_pattern = re.compile('FIELD\s*(\S*)\s*FIELD')
-        self.numdB_aux = Image.open("numdB_aux.png")
         self.HFAv3reader = HFAv3Reader()
         self.HFAv2reader = HFAv2Reader()
 
@@ -95,7 +66,6 @@ class PytesseractReader(ReportReader):
         width, height = img.size
         img = img.convert("RGB")
         arr = np.array(img)
-        img.show()
         report_type_arr = arr[floor(height * 9 / 10):, :]
 
         text = self.ocr_core(report_type_arr)

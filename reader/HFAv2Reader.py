@@ -24,7 +24,7 @@ class HFAv2Reader:
             "ID": re.compile("Patient ID:\s*(.*)"),
             #"FIXMON": re.compile("Fixation Monitor: (.*)"),
             #"FIXTAR": re.compile("Fixation Target: (.*)"),
-            "FIXLOS": re.compile("Fixation Losses:\s*(.*)\s* Strategy:"),
+            "FIXLOS": re.compile("Fixation Losses:\s*(.*)\s*Strategy:"),
             "FPR": re.compile("False POS Errors:\s*(.*)"),
             "Duration": re.compile("Test Duration: (.*)"),
             "FNR": re.compile("False NEG Errors:\s*(.*)"),
@@ -61,33 +61,7 @@ class HFAv2Reader:
     def ocr_main_graph(self, image):
         text = pytesseract.image_to_string(image, config= "--psm 7 -c tessedit_char_whitelist=FIELD-<0123456789 CONFIGFILE=VFTgraph")
         return text
-    def concat_images(self, imga, imgb):
-        """
-        Combines two color image ndarrays side-by-side.
-        """
-        print("imga: ", imga.shape)
-        print("imgb: ", imgb.shape)
-        ha,wa = imga.shape[:2]
-        hb,wb = imgb.shape[:2]
-        max_height = np.max([ha, hb])
-        total_width = wa+wb
-        new_img = np.zeros(shape=(max_height, total_width, 3))
-        new_img[:ha,:wa]=imga
-        new_img[:hb,wa:wa+wb]=imgb
-        return new_img
-
-    def concat_n_images(self, image_list):
-        """
-        Combines N color images from a list of image paths.
-        """
-        output = None
-        for i, img in enumerate(image_list):
-            if i==0:
-                output = img
-            else:
-                output = self.concat_images(output, img)
-        return output
-
+    
     def readImage(self, dir, filename):
 
         file = os.path.join(dir, filename)
@@ -99,7 +73,7 @@ class HFAv2Reader:
             img = Image.open(file)    
         print(img.size)
         img = img.resize((4250, 5500))
-
+        img.save("HFAv2_sample.png")
         arr = np.array(img)
         #Crop graphs
         sensGraph = img.crop((1038, 1050, 2232, 2463))
@@ -119,7 +93,6 @@ class HFAv2Reader:
         arr[1050:1800, 1038:] = 255
         arr[1800:, :] = 255
         cropped = Image.fromarray(arr)
-        cropped.show()
         main_text = self.ocr_core(cropped)
         print(main_text)
         
@@ -223,9 +196,9 @@ class HFAv2Reader:
                     match = pattern.search(val)
 
                     if match:
-                        result[int((i-1)/2)][int(j/2)]  = match.group(0)
+                        result[int((i-1)/2)+1][int(j/2)]  = match.group(0)
                     else:
-                        result[int((i-1)/2)][int(j/2)]  = ''
+                        result[int((i-1)/2)+1][int(j/2)]  = ''
                 else:
                     continue
         for i in result:
