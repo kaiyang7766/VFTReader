@@ -1,4 +1,4 @@
-('C:\\Users\\HP - PC\\VFTReader\\build\\launcher\\launcher.exe',
+('C:\\Users\\HP - PC\\VFTreader\\build\\launcher\\launcher.exe',
  True,
  False,
  True,
@@ -11,7 +11,7 @@
  True,
  'launcher.pkg',
  [('PYZ-00.pyz',
-   'C:\\Users\\HP - PC\\VFTReader\\build\\launcher\\PYZ-00.pyz',
+   'C:\\Users\\HP - PC\\VFTreader\\build\\launcher\\PYZ-00.pyz',
    'PYZ'),
   ('struct', 'c:\\users\\hp - pc\\anaconda3\\lib\\struct.pyo', 'PYMODULE'),
   ('pyimod01_os_path',
@@ -34,14 +34,6 @@
    'c:\\users\\hp - '
    'pc\\anaconda3\\lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_win32api.py',
    'PYSOURCE'),
-  ('pyi_rth__tkinter',
-   'c:\\users\\hp - '
-   'pc\\anaconda3\\lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth__tkinter.py',
-   'PYSOURCE'),
-  ('pyi_rth_multiprocessing',
-   'c:\\users\\hp - '
-   'pc\\anaconda3\\lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_multiprocessing.py',
-   'PYSOURCE'),
   ('pyi_rth_pkgres',
    'c:\\users\\hp - '
    'pc\\anaconda3\\lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgres.py',
@@ -49,6 +41,10 @@
   ('pyi_rth_win32comgenpy',
    'c:\\users\\hp - '
    'pc\\anaconda3\\lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_win32comgenpy.py',
+   'PYSOURCE'),
+  ('pyi_rth_multiprocessing',
+   'c:\\users\\hp - '
+   'pc\\anaconda3\\lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_multiprocessing.py',
    'PYSOURCE'),
   ('pyi_rth_traitlets',
    'c:\\users\\hp - '
@@ -66,14 +62,18 @@
    'c:\\users\\hp - '
    'pc\\anaconda3\\lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_mplconfig.py',
    'PYSOURCE'),
-  ('launcher', 'C:\\Users\\HP - PC\\VFTReader\\launcher.py', 'PYSOURCE'),
+  ('pyi_rth__tkinter',
+   'c:\\users\\hp - '
+   'pc\\anaconda3\\lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth__tkinter.py',
+   'PYSOURCE'),
+  ('launcher', 'C:\\Users\\HP - PC\\VFTreader\\launcher.py', 'PYSOURCE'),
   ('launcher.exe.manifest',
-   'C:\\Users\\HP - PC\\VFTReader\\build\\launcher\\launcher.exe.manifest',
+   'C:\\Users\\HP - PC\\VFTreader\\build\\launcher\\launcher.exe.manifest',
    'BINARY')],
  [],
  False,
  False,
- 1624415016,
+ 1626141209,
  [('run.exe',
    'c:\\users\\hp - '
    'pc\\anaconda3\\lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit\\run.exe',
