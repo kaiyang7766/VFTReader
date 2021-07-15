@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Guide &#8212; Visual Field Test reader 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Documentations" href="modules.html" />
+    <link rel="prev" title="Welcome to Visual Field Test reader’s documentation!" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="Documentations"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Visual Field Test reader’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Visual Field Test reader 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">User Guide</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="user-guide">
+<h1>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h1>
+<p>Welcome to the ‘Visual Field Test reader’ user guide. The application may be used to automatically
+extract information from VFT reports, as well as reviewing and correcting the extracted reports.</p>
+<p>This guide will show you how to:</p>
+<ul class="simple">
+<li><p>Extract data from a directory with VFT reports, and saving it to your device.</p></li>
+<li><p>Load and view your extracted data.</p></li>
+<li><p>Make changes to the data.</p></li>
+</ul>
+<div class="section" id="extract-data">
+<h2>1) Extract data<a class="headerlink" href="#extract-data" title="Permalink to this headline">¶</a></h2>
+<p>The data extraction feature is located at the welcome screen.</p>
+<img alt="_images/VFT1.png" class="align-center" src="_images/VFT1.png" />
+<ol class="arabic simple">
+<li><p>The selected input directory. Every VFT reports in this directory will be extracted.</p></li>
+<li><p>A browse button to browse for the input directory.</p></li>
+<li><p>An extract button. Click to begin the extraction process.</p></li>
+<li><p>A review button. After data extraction is completed, click to view your extracted reports.</p></li>
+</ol>
+<p>First, place all the VFT reports that need to be extracted in a directory, and select the
+directory using the browse button. Then, you may check again if the path to the directory is
+correct, or select another directory. To begin extraction, click on the ‘Extract’ button. The
+extraction process may take a while, so please wait patiently while it reads the reports. You
+may use the log window to monitor its progress.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The application currently can only read in files with the following extensions: “.png”; “.pdf”; “.tif”; “.jpg”.</p>
+</div>
+<p>When the extraction process is finished, the application will prompt you to save your extracted data to a CSV file. Once saved,
+you may select another directory for extraction, or click ‘Review’ to view and edit the extracted data.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The VFT reports should be in English. For optimal accuracy, HFAv3 reports should be in at least 200 dpi, and HFAv2 should be
+in at least 500 dpi. Ensure that all the fields in your report are in the same position as the corresponding fields in the test
+dataset, or within the bounding boxes of the templates.</p>
+</div>
+</div>
+<div class="section" id="load-and-view-your-data">
+<h2>2) Load and view your data<a class="headerlink" href="#load-and-view-your-data" title="Permalink to this headline">¶</a></h2>
+<p>Upon clicking the ‘Review’ button, the application will take you to the report viewing and editing interface.</p>
+<img alt="_images/VFT2.png" class="align-center" src="_images/VFT2.png" />
+<ol class="arabic simple">
+<li><p>A list of extracted report.</p></li>
+<li><p>The ‘commit’ button. Will saves all changes that was made to a report.</p></li>
+<li><p>The ‘load’ button. Loads a batch of extracted reports into the program.</p></li>
+<li><p>Value fields. Displays the information from the currently viewed report.</p></li>
+<li><p>The ‘back’ button. Will return you to the welcome interface.</p></li>
+</ol>
+<p>To view your extracted data, use the ‘load’ button to navigate to the CSV file exported from the extraction process.
+Upon loading the data, the application will display the list of extracted reports in the top-left corner. You may click
+on a report to view its details.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Reports after being verified and corrected by the user (upon clicking ‘commit’) will be marked as ‘checked’. The name of
+the report will be displayed with a green highlight on the report list, as shown in the image of the interface.</p>
+</div>
+</div>
+<div class="section" id="editing-your-data">
+<h2>3) Editing your data<a class="headerlink" href="#editing-your-data" title="Permalink to this headline">¶</a></h2>
+<p>After selecting a report to view, the application will then display the extracted information from that on the interface. You may verify that all the fields are extracted
+correctly. If you spot an incorrect field, you may edit it by simply entering the correct value.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The application may show a warning if it thinks that a field was extracted incorrectly. Such fields will be displayed with a
+yellow highlight. Note that there may still be incorrect fields that were not shown a warning.</p>
+</div>
+<p>After verifying that all fields in a report are correct or has been corrected, click the ‘commit’ button to commit all your changes
+to the report. Afterwards, you may select another report to view and edit, load another batch in, or go back to extract more VFT reports.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must click the ‘commit’ button to save your changes to the report. If you do not click ‘commit’ before loading another report,
+your changes will be discarded.</p>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">User Guide</a><ul>
+<li><a class="reference internal" href="#extract-data">1) Extract data</a></li>
+<li><a class="reference internal" href="#load-and-view-your-data">2) Load and view your data</a></li>
+<li><a class="reference internal" href="#editing-your-data">3) Editing your data</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to Visual Field Test reader’s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="modules.html"
+                        title="next chapter">Documentations</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/user-guide.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="Documentations"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Visual Field Test reader’s documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Visual Field Test reader 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">User Guide</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Luong Minh Quang.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.3.
+    </div>
+  </body>
+</html>

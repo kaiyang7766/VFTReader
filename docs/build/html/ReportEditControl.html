@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReportEditControl &#8212; Visual Field Test reader 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="views" href="views.html" />
+    <link rel="prev" title="WelcomeControl" href="WelcomeControl.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="views.html" title="views"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="WelcomeControl.html" title="WelcomeControl"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Visual Field Test reader 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >Documentations</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="control.html" accesskey="U">control</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ReportEditControl</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-ReportEditControl">
+<span id="reporteditcontrol"></span><h1>ReportEditControl<a class="headerlink" href="#module-ReportEditControl" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ReportEditControl.ReportEditControl">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">ReportEditControl.</span></span><span class="sig-name descname"><span class="pre">ReportEditControl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">tkinter.Tk</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ReportEditControl.ReportEditControl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Control class for viewing and verifying extracted VFT reports.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ReportEditControl.ReportEditControl.root">
+<span class="sig-name descname"><span class="pre">root</span></span><a class="headerlink" href="#ReportEditControl.ReportEditControl.root" title="Permalink to this definition">¶</a></dt>
+<dd><p>The main Tk window.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ReportEditControl.ReportEditControl.writer">
+<span class="sig-name descname"><span class="pre">writer</span></span><a class="headerlink" href="#ReportEditControl.ReportEditControl.writer" title="Permalink to this definition">¶</a></dt>
+<dd><p>A writer to write the extracted VFT reports. Currently, only .csv writer is implemented.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ReportEditControl.ReportEditControl.reader">
+<span class="sig-name descname"><span class="pre">reader</span></span><a class="headerlink" href="#ReportEditControl.ReportEditControl.reader" title="Permalink to this definition">¶</a></dt>
+<dd><p>A reader to read the extracted VFT reports. Currently only .csv reader is implemented.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ReportEditControl.ReportEditControl.views">
+<span class="sig-name descname"><span class="pre">views</span></span><a class="headerlink" href="#ReportEditControl.ReportEditControl.views" title="Permalink to this definition">¶</a></dt>
+<dd><p>The UI elements of the activity.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ReportEditControl.ReportEditControl.curFile">
+<span class="sig-name descname"><span class="pre">curFile</span></span><a class="headerlink" href="#ReportEditControl.ReportEditControl.curFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>The file path to the file being viewed by the user. Currently, this should point to a .csv file.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ReportEditControl.ReportEditControl.filelist">
+<span class="sig-name descname"><span class="pre">filelist</span></span><a class="headerlink" href="#ReportEditControl.ReportEditControl.filelist" title="Permalink to this definition">¶</a></dt>
+<dd><p>The VFT reports read from the selected file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReportEditControl.ReportEditControl.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">tkinter.Tk</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ReportEditControl.ReportEditControl.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes the control class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>root</strong> (<em>Tk</em>) – The main Tk window.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReportEditControl.ReportEditControl.back">
+<span class="sig-name descname"><span class="pre">back</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ReportEditControl.ReportEditControl.back" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return to the previous activity, which is the welcome activity.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReportEditControl.ReportEditControl.displayReport">
+<span class="sig-name descname"><span class="pre">displayReport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ReportEditControl.ReportEditControl.displayReport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the information of a selected VFT report on the user interface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – The index of the report selected in the list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReportEditControl.ReportEditControl.logFieldWarnings">
+<span class="sig-name descname"><span class="pre">logFieldWarnings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ReportEditControl.ReportEditControl.logFieldWarnings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes a warning about missing fields in the selected report.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReportEditControl.ReportEditControl.readCsv">
+<span class="sig-name descname"><span class="pre">readCsv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ReportEditControl.ReportEditControl.readCsv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads the VFT reports into the program from a .csv file. The reports are then represented in VFTReport objects and stored in filelist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – The path to the file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReportEditControl.ReportEditControl.saveReport">
+<span class="sig-name descname"><span class="pre">saveReport</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ReportEditControl.ReportEditControl.saveReport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the changes to the selected report.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if the changes were saved successfully.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReportEditControl.ReportEditControl.startActivity">
+<span class="sig-name descname"><span class="pre">startActivity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ReportEditControl.ReportEditControl.startActivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes the activity. This should be called right after initializing the control class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReportEditControl.ReportEditControl.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">newReport</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">models.VFTReport.VFTReport</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ReportEditControl.ReportEditControl.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the UI after committing the file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>newReport</strong> (<a class="reference internal" href="VFTReport.html#VFTReport.VFTReport" title="VFTReport.VFTReport"><em>VFTReport</em></a>) – The new values of the report.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="WelcomeControl.html"
+                        title="previous chapter">WelcomeControl</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="views.html"
+                        title="next chapter">views</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/ReportEditControl.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="views.html" title="views"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="WelcomeControl.html" title="WelcomeControl"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Visual Field Test reader 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >Documentations</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="control.html" >control</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ReportEditControl</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Luong Minh Quang.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.3.
+    </div>
+  </body>
+</html>

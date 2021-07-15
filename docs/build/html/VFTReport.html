@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VFTReport &#8212; Visual Field Test reader 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="VFTParams" href="VFTParams.html" />
+    <link rel="prev" title="models" href="models.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="VFTParams.html" title="VFTParams"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="models.html" title="models"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Visual Field Test reader 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >Documentations</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="models.html" accesskey="U">models</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">VFTReport</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-VFTReport">
+<span id="vftreport"></span><h1>VFTReport<a class="headerlink" href="#module-VFTReport" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="VFTReport.VFTReport">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">VFTReport.</span></span><span class="sig-name descname"><span class="pre">VFTReport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eyeSide</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FIXLOS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FIXTST</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FNR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FPR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testDuration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GHT</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">VFI</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MD</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MDp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PSD</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PSDp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strategy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stimulus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">foveaRefdB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SGraphvalues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MDGraphValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PSDGraphValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checked</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#VFTReport.VFTReport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The representation of a Visual Field Test report in the application</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="VFTReport.VFTReport.fileName">
+<span class="sig-name descname"><span class="pre">fileName</span></span><a class="headerlink" href="#VFTReport.VFTReport.fileName" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the VFT report file.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="VFTReport.VFTReport.patientData">
+<span class="sig-name descname"><span class="pre">patientData</span></span><a class="headerlink" href="#VFTReport.VFTReport.patientData" title="Permalink to this definition">¶</a></dt>
+<dd><p>The patient’s information.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="VFTReport.VFTReport.params">
+<span class="sig-name descname"><span class="pre">params</span></span><a class="headerlink" href="#VFTReport.VFTReport.params" title="Permalink to this definition">¶</a></dt>
+<dd><p>The parameters of the test.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="VFTReport.VFTReport.results">
+<span class="sig-name descname"><span class="pre">results</span></span><a class="headerlink" href="#VFTReport.VFTReport.results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Information about the results of the test.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="VFTReport.VFTReport.reliability">
+<span class="sig-name descname"><span class="pre">reliability</span></span><a class="headerlink" href="#VFTReport.VFTReport.reliability" title="Permalink to this definition">¶</a></dt>
+<dd><p>The reliability metrics of the test.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="VFTReport.VFTReport.fovea">
+<span class="sig-name descname"><span class="pre">fovea</span></span><a class="headerlink" href="#VFTReport.VFTReport.fovea" title="Permalink to this definition">¶</a></dt>
+<dd><p>Information regarding the fovea.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="VFTReport.VFTReport.sensitivityGraph">
+<span class="sig-name descname"><span class="pre">sensitivityGraph</span></span><a class="headerlink" href="#VFTReport.VFTReport.sensitivityGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>The main numeric dB graph.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="VFTReport.VFTReport.MDGraph">
+<span class="sig-name descname"><span class="pre">MDGraph</span></span><a class="headerlink" href="#VFTReport.VFTReport.MDGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>The total deviation graph.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="VFTReport.VFTReport.PSDGraph">
+<span class="sig-name descname"><span class="pre">PSDGraph</span></span><a class="headerlink" href="#VFTReport.VFTReport.PSDGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>The pattern deviation graph.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="VFTReport.VFTReport.checked">
+<span class="sig-name descname"><span class="pre">checked</span></span><a class="headerlink" href="#VFTReport.VFTReport.checked" title="Permalink to this definition">¶</a></dt>
+<dd><p>0 if the report has not been revised.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="VFTReport.VFTReport.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eyeSide</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FIXLOS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FIXTST</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FNR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FPR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testDuration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GHT</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">VFI</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MD</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MDp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PSD</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PSDp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strategy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stimulus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">foveaRefdB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SGraphvalues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MDGraphValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PSDGraphValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checked</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#VFTReport.VFTReport.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">checked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the checked status to ‘1’ (have been checked)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="VFTReport.VFTReport.getFileName">
+<span class="sig-name descname"><span class="pre">getFileName</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#VFTReport.VFTReport.getFileName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="VFTReport.VFTReport.getFoveaRefdB">
+<span class="sig-name descname"><span class="pre">getFoveaRefdB</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#VFTReport.VFTReport.getFoveaRefdB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="VFTReport.VFTReport.getMDGraph">
+<span class="sig-name descname"><span class="pre">getMDGraph</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#VFTReport.VFTReport.getMDGraph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="VFTReport.VFTReport.getPSDGraph">
+<span class="sig-name descname"><span class="pre">getPSDGraph</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#VFTReport.VFTReport.getPSDGraph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="VFTReport.VFTReport.getPatientData">
+<span class="sig-name descname"><span class="pre">getPatientData</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#VFTReport.VFTReport.getPatientData" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="VFTReport.VFTReport.getReliabilityMetrics">
+<span class="sig-name descname"><span class="pre">getReliabilityMetrics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#VFTReport.VFTReport.getReliabilityMetrics" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="VFTReport.VFTReport.getResults">
+<span class="sig-name descname"><span class="pre">getResults</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#VFTReport.VFTReport.getResults" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="VFTReport.VFTReport.getSensitivityGraph">
+<span class="sig-name descname"><span class="pre">getSensitivityGraph</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#VFTReport.VFTReport.getSensitivityGraph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="VFTReport.VFTReport.getTestParams">
+<span class="sig-name descname"><span class="pre">getTestParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#VFTReport.VFTReport.getTestParams" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="VFTReport.VFTReport.isChecked">
+<span class="sig-name descname"><span class="pre">isChecked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#VFTReport.VFTReport.isChecked" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the checked status of the report</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>0 if the report has not been checked, 1 if otherwise</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="VFTReport.VFTReport.toDict">
+<span class="sig-name descname"><span class="pre">toDict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#VFTReport.VFTReport.toDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a dictionary representation of the VFT report. The keys in the dict are the field names, same as those in the sample .csv files, and the values of the dict are the values in the report</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The dictionary containing the information of the report.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="models.html"
+                        title="previous chapter">models</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="VFTParams.html"
+                        title="next chapter">VFTParams</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/VFTReport.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="VFTParams.html" title="VFTParams"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="models.html" title="models"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Visual Field Test reader 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >Documentations</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="models.html" >models</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">VFTReport</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Luong Minh Quang.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.3.
+    </div>
+  </body>
+</html>

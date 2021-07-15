@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WelcomeView &#8212; Visual Field Test reader 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ReportEditView" href="ReportEditView.html" />
+    <link rel="prev" title="LogView" href="LogView.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ReportEditView.html" title="ReportEditView"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="LogView.html" title="LogView"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Visual Field Test reader 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >Documentations</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="views.html" accesskey="U">views</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">WelcomeView</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-WelcomeView">
+<span id="welcomeview"></span><h1>WelcomeView<a class="headerlink" href="#module-WelcomeView" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="WelcomeView.WelcomeView">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">WelcomeView.</span></span><span class="sig-name descname"><span class="pre">WelcomeView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">control</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WelcomeView.WelcomeView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>UI components for the welcome activity.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="WelcomeView.WelcomeView.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">control</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WelcomeView.WelcomeView.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes the UI elements</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>root</strong> (<em>Tk</em>) – The main application window.</p></li>
+<li><p><strong>control</strong> (<a class="reference internal" href="WelcomeControl.html#WelcomeControl.WelcomeControl" title="WelcomeControl.WelcomeControl"><em>WelcomeControl</em></a>) – The control of the activity.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="WelcomeView.WelcomeView.disableExtraction">
+<span class="sig-name descname"><span class="pre">disableExtraction</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WelcomeView.WelcomeView.disableExtraction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disables the extract button. Used during the extraction process.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="WelcomeView.WelcomeView.enableExtraction">
+<span class="sig-name descname"><span class="pre">enableExtraction</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WelcomeView.WelcomeView.enableExtraction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables the extract button. Used after the extraction process.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="WelcomeView.WelcomeView.onBrowseDirectory">
+<span class="sig-name descname"><span class="pre">onBrowseDirectory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#WelcomeView.WelcomeView.onBrowseDirectory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to be called upon clicking the “Browse” button.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="WelcomeView.WelcomeView.onExtractRequest">
+<span class="sig-name descname"><span class="pre">onExtractRequest</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WelcomeView.WelcomeView.onExtractRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to be called upon clicking the “Extract” button.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="WelcomeView.WelcomeView.onFinishExtraction">
+<span class="sig-name descname"><span class="pre">onFinishExtraction</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WelcomeView.WelcomeView.onFinishExtraction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to be called after activity’s control finished extracting selected reports.</p>
+<p>Asks the user for a location to save the extracted reports.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The path specified by the user</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="WelcomeView.WelcomeView.onNextActivity">
+<span class="sig-name descname"><span class="pre">onNextActivity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WelcomeView.WelcomeView.onNextActivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to call upon selecting to move to next activity</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="WelcomeView.WelcomeView.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#WelcomeView.WelcomeView.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="LogView.html"
+                        title="previous chapter">LogView</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ReportEditView.html"
+                        title="next chapter">ReportEditView</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/WelcomeView.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ReportEditView.html" title="ReportEditView"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="LogView.html" title="LogView"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Visual Field Test reader 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >Documentations</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="views.html" >views</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">WelcomeView</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Luong Minh Quang.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.3.
+    </div>
+  </body>
+</html>

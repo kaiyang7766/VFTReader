@@ -33,8 +33,15 @@ class VFTReport:
         self.MDGraph = NumDbGraph(MDGraphValues)
         self.PSDGraph = NumDbGraph(PSDGraphValues)
     def isChecked(self):
+        """Returns the checked status of the report
+
+        Returns:
+            int: 0 if the report has not been checked, 1 if otherwise
+        """
         return self.checked
     def checked(self):
+        """Updates the checked status to '1' (have been checked)
+        """
         self.checked = 1
     def getFileName(self):
         return self.fileName
@@ -60,6 +67,11 @@ class VFTReport:
     def getPSDGraph(self):
         return self.PSDGraph
     def toDict(self):
+        """Creates a dictionary representation of the VFT report. The keys in the dict are the field names, same as those in the sample .csv files, and the values of the dict are the values in the report
+
+        Returns:
+            Dict: The dictionary containing the information of the report.
+        """
         result =   {
                     "ID": self.getPatientData().getID(),
                     "File name": self.getFileName(),

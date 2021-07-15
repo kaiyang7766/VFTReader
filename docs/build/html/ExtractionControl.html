@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ExtractionControl &#8212; Visual Field Test reader 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="WelcomeControl" href="WelcomeControl.html" />
+    <link rel="prev" title="Log" href="Log.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="WelcomeControl.html" title="WelcomeControl"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Log.html" title="Log"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Visual Field Test reader 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >Documentations</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="control.html" accesskey="U">control</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ExtractionControl</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-ExtractionControl">
+<span id="extractioncontrol"></span><h1>ExtractionControl<a class="headerlink" href="#module-ExtractionControl" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ExtractionControl.ExtractionControl">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">ExtractionControl.</span></span><span class="sig-name descname"><span class="pre">ExtractionControl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">tkinter.Tk</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ExtractionControl.ExtractionControl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>An interface for activities that implements VFT report extraction features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>root</strong> (<em>Tk</em>) – Root window to contain widgets for the activity.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ExtractionControl.ExtractionControl.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">tkinter.Tk</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ExtractionControl.ExtractionControl.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ExtractionControl.ExtractionControl.extract">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">extract</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ExtractionControl.ExtractionControl.extract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract the VFT reports specified.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ExtractionControl.ExtractionControl.logError">
+<span class="sig-name descname"><span class="pre">logError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ExtractionControl.ExtractionControl.logError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints an error message to the log window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>error</strong> (<em>str</em>) – The error message.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ExtractionControl.ExtractionControl.logMessage">
+<span class="sig-name descname"><span class="pre">logMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ExtractionControl.ExtractionControl.logMessage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints a normal log message to the log window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – The message to be printed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ExtractionControl.ExtractionControl.onFinishExtraction">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">onFinishExtraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reportList</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">models.VFTReport.VFTReport</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ExtractionControl.ExtractionControl.onFinishExtraction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called on finish extracting all requested VFT reports.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>reportList</strong> (<em>List</em><em>[</em><a class="reference internal" href="VFTReport.html#VFTReport.VFTReport" title="VFTReport.VFTReport"><em>VFTReport</em></a><em>]</em>) – The list of reports that was extracted.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Log.html"
+                        title="previous chapter">Log</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="WelcomeControl.html"
+                        title="next chapter">WelcomeControl</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/ExtractionControl.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="WelcomeControl.html" title="WelcomeControl"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Log.html" title="Log"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Visual Field Test reader 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >Documentations</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="control.html" >control</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ExtractionControl</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Luong Minh Quang.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.3.
+    </div>
+  </body>
+</html>

@@ -386,7 +386,7 @@ class ReportEditView:
 
         Args:
             namelist (List[str]): The list of filenames of the reports.
-            checklist ([type]): The list of 'checked' status of the reports.
+            checklist (List[str]): The list of 'checked' status of the reports.
         """
         for i in range(len(namelist)):
             self.reportSelectionList.insert(i, namelist[i])

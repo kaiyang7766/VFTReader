@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReportEditView &#8212; Visual Field Test reader 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="reader" href="reader.html" />
+    <link rel="prev" title="WelcomeView" href="WelcomeView.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="reader.html" title="reader"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="WelcomeView.html" title="WelcomeView"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Visual Field Test reader 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >Documentations</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="views.html" accesskey="U">views</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ReportEditView</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-ReportEditView">
+<span id="reporteditview"></span><h1>ReportEditView<a class="headerlink" href="#module-ReportEditView" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ReportEditView.NumDbGraphView">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">ReportEditView.</span></span><span class="sig-name descname"><span class="pre">NumDbGraphView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">master</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cnf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kw</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ReportEditView.NumDbGraphView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tkinter.Frame</span></code></p>
+<p>Utility class, contains the UI elements for a numeric dB graph.</p>
+<p>Consists of a title, and 76 entry boxes arranged in a shape similar to a numeric dB graph</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ReportEditView.NumDbGraphView.fill">
+<span class="sig-name descname"><span class="pre">fill</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ReportEditView.NumDbGraphView.fill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes the entry boxes of a numeric dB graph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReportEditView.NumDbGraphView.getVariables">
+<span class="sig-name descname"><span class="pre">getVariables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ReportEditView.NumDbGraphView.getVariables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the values in the entry boxes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A 10 x 10 2D list containing the values.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[List[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReportEditView.NumDbGraphView.setTitle">
+<span class="sig-name descname"><span class="pre">setTitle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ReportEditView.NumDbGraphView.setTitle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the name of a graph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>title</strong> (<em>str</em>) – The name of the graph.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReportEditView.NumDbGraphView.setVariables">
+<span class="sig-name descname"><span class="pre">setVariables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_matrix</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ReportEditView.NumDbGraphView.setVariables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the values in the entry boxes with the new values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>new_matrix</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>str</em><em>]</em><em>]</em>) – The new values, in a 10 x 10 matrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReportEditView.NumDbGraphView.showWarning">
+<span class="sig-name descname"><span class="pre">showWarning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eye</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blindspot</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ReportEditView.NumDbGraphView.showWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Highlights boxes with potentially wrong values. Currently only highlights empty boxes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eye</strong> (<em>str</em>) – The eye side being displayed</p></li>
+<li><p><strong>blindspot</strong> (<em>bool</em>) – Set to false to ignore natural blindspots.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if there are at least one wrong/missing value.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ReportEditView.ReportEditView">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">ReportEditView.</span></span><span class="sig-name descname"><span class="pre">ReportEditView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ReportEditView.ReportEditView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>UI elements for the report viewing and editing activity.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ReportEditView.ReportEditView.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#ReportEditView.ReportEditView.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes the UI elements</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>control</strong> (<a class="reference internal" href="ReportEditControl.html#ReportEditControl.ReportEditControl" title="ReportEditControl.ReportEditControl"><em>ReportEditControl</em></a>) – The control of the activity.</p></li>
+<li><p><strong>(</strong><strong>)</strong> (<em>root</em>) – The main application window.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReportEditView.ReportEditView.back">
+<span class="sig-name descname"><span class="pre">back</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ReportEditView.ReportEditView.back" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns to the welcome activity</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReportEditView.ReportEditView.commit">
+<span class="sig-name descname"><span class="pre">commit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ReportEditView.ReportEditView.commit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves all changes to the current report.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReportEditView.ReportEditView.displayReportList">
+<span class="sig-name descname"><span class="pre">displayReportList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">namelist</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checklist</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ReportEditView.ReportEditView.displayReportList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the list of reports read from the .csv file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>namelist</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – The list of filenames of the reports.</p></li>
+<li><p><strong>checklist</strong> (<em>[</em><em>type</em><em>]</em>) – The list of ‘checked’ status of the reports.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReportEditView.ReportEditView.loadStudy">
+<span class="sig-name descname"><span class="pre">loadStudy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ReportEditView.ReportEditView.loadStudy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a .csv file into the program</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReportEditView.ReportEditView.onSelectReport">
+<span class="sig-name descname"><span class="pre">onSelectReport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ReportEditView.ReportEditView.onSelectReport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to be called after selecting a report in the list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<em>Any</em>) – Argument needed for retrieving the selected item in the list.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReportEditView.ReportEditView.showWarning">
+<span class="sig-name descname"><span class="pre">showWarning</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ReportEditView.ReportEditView.showWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Highlights all entry boxes with wrong/missing values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if at least one entry box has a wrong/missing value.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="WelcomeView.html"
+                        title="previous chapter">WelcomeView</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="reader.html"
+                        title="next chapter">reader</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/ReportEditView.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="reader.html" title="reader"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="WelcomeView.html" title="WelcomeView"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Visual Field Test reader 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >Documentations</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="views.html" >views</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ReportEditView</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Luong Minh Quang.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.3.
+    </div>
+  </body>
+</html>

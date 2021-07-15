@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReliabilityMetrics &#8212; Visual Field Test reader 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="PatientData" href="PatientData.html" />
+    <link rel="prev" title="VFTParams" href="VFTParams.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="PatientData.html" title="PatientData"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="VFTParams.html" title="VFTParams"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Visual Field Test reader 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >Documentations</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="models.html" accesskey="U">models</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ReliabilityMetrics</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-ReliabilityMetrics">
+<span id="reliabilitymetrics"></span><h1>ReliabilityMetrics<a class="headerlink" href="#module-ReliabilityMetrics" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ReliabilityMetrics.ReliabilityMetrics">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">ReliabilityMetrics.</span></span><span class="sig-name descname"><span class="pre">ReliabilityMetrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">FIXLOS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FIXTST</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FNR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FPR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testDuration</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ReliabilityMetrics.ReliabilityMetrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The reliability metrics in a VFT report</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ReliabilityMetrics.ReliabilityMetrics.FIXLOS">
+<span class="sig-name descname"><span class="pre">FIXLOS</span></span><a class="headerlink" href="#ReliabilityMetrics.ReliabilityMetrics.FIXLOS" title="Permalink to this definition">¶</a></dt>
+<dd><p>The fixation losses.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ReliabilityMetrics.ReliabilityMetrics.FIXTST">
+<span class="sig-name descname"><span class="pre">FIXTST</span></span><a class="headerlink" href="#ReliabilityMetrics.ReliabilityMetrics.FIXTST" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of fixation tests.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ReliabilityMetrics.ReliabilityMetrics.FNR">
+<span class="sig-name descname"><span class="pre">FNR</span></span><a class="headerlink" href="#ReliabilityMetrics.ReliabilityMetrics.FNR" title="Permalink to this definition">¶</a></dt>
+<dd><p>False negative rate.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ReliabilityMetrics.ReliabilityMetrics.FPR">
+<span class="sig-name descname"><span class="pre">FPR</span></span><a class="headerlink" href="#ReliabilityMetrics.ReliabilityMetrics.FPR" title="Permalink to this definition">¶</a></dt>
+<dd><p>False positive rate.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ReliabilityMetrics.ReliabilityMetrics.testDuration">
+<span class="sig-name descname"><span class="pre">testDuration</span></span><a class="headerlink" href="#ReliabilityMetrics.ReliabilityMetrics.testDuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>The duration of the test.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReliabilityMetrics.ReliabilityMetrics.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">FIXLOS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FIXTST</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FNR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FPR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testDuration</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ReliabilityMetrics.ReliabilityMetrics.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReliabilityMetrics.ReliabilityMetrics.getFIXLOS">
+<span class="sig-name descname"><span class="pre">getFIXLOS</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ReliabilityMetrics.ReliabilityMetrics.getFIXLOS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReliabilityMetrics.ReliabilityMetrics.getFIXTST">
+<span class="sig-name descname"><span class="pre">getFIXTST</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ReliabilityMetrics.ReliabilityMetrics.getFIXTST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReliabilityMetrics.ReliabilityMetrics.getFNR">
+<span class="sig-name descname"><span class="pre">getFNR</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ReliabilityMetrics.ReliabilityMetrics.getFNR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReliabilityMetrics.ReliabilityMetrics.getFPR">
+<span class="sig-name descname"><span class="pre">getFPR</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ReliabilityMetrics.ReliabilityMetrics.getFPR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReliabilityMetrics.ReliabilityMetrics.getTestDuration">
+<span class="sig-name descname"><span class="pre">getTestDuration</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ReliabilityMetrics.ReliabilityMetrics.getTestDuration" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReliabilityMetrics.ReliabilityMetrics.setFIXLOS">
+<span class="sig-name descname"><span class="pre">setFIXLOS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">FIXLOS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ReliabilityMetrics.ReliabilityMetrics.setFIXLOS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReliabilityMetrics.ReliabilityMetrics.setFIXTST">
+<span class="sig-name descname"><span class="pre">setFIXTST</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">FIXTST</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ReliabilityMetrics.ReliabilityMetrics.setFIXTST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReliabilityMetrics.ReliabilityMetrics.setFNR">
+<span class="sig-name descname"><span class="pre">setFNR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">FNR</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ReliabilityMetrics.ReliabilityMetrics.setFNR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReliabilityMetrics.ReliabilityMetrics.setFPR">
+<span class="sig-name descname"><span class="pre">setFPR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">FPR</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ReliabilityMetrics.ReliabilityMetrics.setFPR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ReliabilityMetrics.ReliabilityMetrics.setTestDuration">
+<span class="sig-name descname"><span class="pre">setTestDuration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testDuration</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ReliabilityMetrics.ReliabilityMetrics.setTestDuration" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="VFTParams.html"
+                        title="previous chapter">VFTParams</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="PatientData.html"
+                        title="next chapter">PatientData</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/ReliabilityMetrics.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="PatientData.html" title="PatientData"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="VFTParams.html" title="VFTParams"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Visual Field Test reader 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >Documentations</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="models.html" >models</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ReliabilityMetrics</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Luong Minh Quang.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.3.
+    </div>
+  </body>
+</html>

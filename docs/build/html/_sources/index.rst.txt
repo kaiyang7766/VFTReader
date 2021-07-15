@@ -7,10 +7,11 @@ Welcome to Visual Field Test reader's documentation!
 ====================================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
-
+   user-guide
+   modules
 
 Indices and tables
 ==================

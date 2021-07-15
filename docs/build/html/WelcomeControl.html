@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WelcomeControl &#8212; Visual Field Test reader 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ReportEditControl" href="ReportEditControl.html" />
+    <link rel="prev" title="ExtractionControl" href="ExtractionControl.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ReportEditControl.html" title="ReportEditControl"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ExtractionControl.html" title="ExtractionControl"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Visual Field Test reader 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >Documentations</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="control.html" accesskey="U">control</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">WelcomeControl</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-WelcomeControl">
+<span id="welcomecontrol"></span><h1>WelcomeControl<a class="headerlink" href="#module-WelcomeControl" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="WelcomeControl.WelcomeControl">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">WelcomeControl.</span></span><span class="sig-name descname"><span class="pre">WelcomeControl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">tkinter.Tk</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WelcomeControl.WelcomeControl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">control.ExtractionControl.ExtractionControl</span></code></p>
+<p>The control class for the welcome activity.</p>
+<p>The current welcome activity also contains the extraction feature.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="WelcomeControl.WelcomeControl.root">
+<span class="sig-name descname"><span class="pre">root</span></span><a class="headerlink" href="#WelcomeControl.WelcomeControl.root" title="Permalink to this definition">¶</a></dt>
+<dd><p>The main tk window.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="WelcomeControl.WelcomeControl.writer">
+<span class="sig-name descname"><span class="pre">writer</span></span><a class="headerlink" href="#WelcomeControl.WelcomeControl.writer" title="Permalink to this definition">¶</a></dt>
+<dd><p>A .csv writer to write extracted VFT reports.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="WelcomeControl.WelcomeControl.views">
+<span class="sig-name descname"><span class="pre">views</span></span><a class="headerlink" href="#WelcomeControl.WelcomeControl.views" title="Permalink to this definition">¶</a></dt>
+<dd><p>The UI elements of the activity</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="WelcomeControl.WelcomeControl.messageQueue">
+<span class="sig-name descname"><span class="pre">messageQueue</span></span><a class="headerlink" href="#WelcomeControl.WelcomeControl.messageQueue" title="Permalink to this definition">¶</a></dt>
+<dd><p>A queue to store messages to be printed to the log window.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="WelcomeControl.WelcomeControl.errorQueue">
+<span class="sig-name descname"><span class="pre">errorQueue</span></span><a class="headerlink" href="#WelcomeControl.WelcomeControl.errorQueue" title="Permalink to this definition">¶</a></dt>
+<dd><p>A queue to store errors to be printed to the log window.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="WelcomeControl.WelcomeControl.reportList">
+<span class="sig-name descname"><span class="pre">reportList</span></span><a class="headerlink" href="#WelcomeControl.WelcomeControl.reportList" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of extracted VFT reports, in VFTReport objects.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="WelcomeControl.WelcomeControl.reportReader">
+<span class="sig-name descname"><span class="pre">reportReader</span></span><a class="headerlink" href="#WelcomeControl.WelcomeControl.reportReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>The reader for extracting the information out of VFT reports.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="WelcomeControl.WelcomeControl.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">tkinter.Tk</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WelcomeControl.WelcomeControl.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="WelcomeControl.WelcomeControl.checkQueue">
+<span class="sig-name descname"><span class="pre">checkQueue</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WelcomeControl.WelcomeControl.checkQueue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks both log message queues for messages to be printed.</p>
+<p>Due to tkinter’s limitation, processes from other threads other than the main thread cannot access tkinter’s widgets. Therefore, this
+function was created as a workaround to print log messages during the extraction of the VFT reports.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="WelcomeControl.WelcomeControl.extract">
+<span class="sig-name descname"><span class="pre">extract</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WelcomeControl.WelcomeControl.extract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts the VFT reports in the selected path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filepath</strong> (<em>str</em>) – The path to the file/folder containing the VFT reports.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="WelcomeControl.WelcomeControl.onFinishExtraction">
+<span class="sig-name descname"><span class="pre">onFinishExtraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reportList</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">models.VFTReport.VFTReport</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WelcomeControl.WelcomeControl.onFinishExtraction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to be called upon finishing extraction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>reportList</strong> (<em>List</em><em>[</em><a class="reference internal" href="VFTReport.html#VFTReport.VFTReport" title="VFTReport.VFTReport"><em>VFTReport</em></a><em>]</em>) – The list of extracted report.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="WelcomeControl.WelcomeControl.onFinishSave">
+<span class="sig-name descname"><span class="pre">onFinishSave</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WelcomeControl.WelcomeControl.onFinishSave" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to be called upon finishing saving the extracted reports.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="WelcomeControl.WelcomeControl.onNextActivity">
+<span class="sig-name descname"><span class="pre">onNextActivity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WelcomeControl.WelcomeControl.onNextActivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Moves to the report viewing and editing activity.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="WelcomeControl.WelcomeControl.queueError">
+<span class="sig-name descname"><span class="pre">queueError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WelcomeControl.WelcomeControl.queueError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queues an error message to be printed to the log window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>error</strong> (<em>str</em>) – The message to be printed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="WelcomeControl.WelcomeControl.queueMessage">
+<span class="sig-name descname"><span class="pre">queueMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WelcomeControl.WelcomeControl.queueMessage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queues a normal log message to be printed to the log window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – The message to be printed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="WelcomeControl.WelcomeControl.saveReports">
+<span class="sig-name descname"><span class="pre">saveReports</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WelcomeControl.WelcomeControl.saveReports" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the reports at selected location.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="WelcomeControl.WelcomeControl.startActivity">
+<span class="sig-name descname"><span class="pre">startActivity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WelcomeControl.WelcomeControl.startActivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes the UI elements.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ExtractionControl.html"
+                        title="previous chapter">ExtractionControl</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ReportEditControl.html"
+                        title="next chapter">ReportEditControl</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/WelcomeControl.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ReportEditControl.html" title="ReportEditControl"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ExtractionControl.html" title="ExtractionControl"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Visual Field Test reader 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >Documentations</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="control.html" >control</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">WelcomeControl</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Luong Minh Quang.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.3.
+    </div>
+  </body>
+</html>

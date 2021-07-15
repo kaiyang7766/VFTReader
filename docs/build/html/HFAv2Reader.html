@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HFAv2Reader &#8212; Visual Field Test reader 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="HFAv3Reader" href="HFAv3Reader.html" />
+    <link rel="prev" title="PytesseractReader" href="PytesseractReader.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="HFAv3Reader.html" title="HFAv3Reader"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="PytesseractReader.html" title="PytesseractReader"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Visual Field Test reader 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >Documentations</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="reader.html" accesskey="U">reader</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">HFAv2Reader</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-HFAv2Reader">
+<span id="hfav2reader"></span><h1>HFAv2Reader<a class="headerlink" href="#module-HFAv2Reader" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="HFAv2Reader.HFAv2Reader">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">HFAv2Reader.</span></span><span class="sig-name descname"><span class="pre">HFAv2Reader</span></span><a class="headerlink" href="#HFAv2Reader.HFAv2Reader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Extraction algorithm for HFAv3 reports.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HFAv2Reader.HFAv2Reader.patterns">
+<span class="sig-name descname"><span class="pre">patterns</span></span><a class="headerlink" href="#HFAv2Reader.HFAv2Reader.patterns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Regular expressions for filtering information from raw text</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HFAv2Reader.HFAv2Reader.numdB_pattern">
+<span class="sig-name descname"><span class="pre">numdB_pattern</span></span><a class="headerlink" href="#HFAv2Reader.HFAv2Reader.numdB_pattern" title="Permalink to this definition">¶</a></dt>
+<dd><p>Regular expressions for numeric dB graph values, after preprocessing.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HFAv2Reader.HFAv2Reader.numdB_aux">
+<span class="sig-name descname"><span class="pre">numdB_aux</span></span><a class="headerlink" href="#HFAv2Reader.HFAv2Reader.numdB_aux" title="Permalink to this definition">¶</a></dt>
+<dd><p>An auxiliary image used to enhance accuracy. See readNum for more information</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HFAv2Reader.HFAv2Reader.HFAv2mainGraph2data">
+<span class="sig-name descname"><span class="pre">HFAv2mainGraph2data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HFAv2Reader.HFAv2Reader.HFAv2mainGraph2data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts an image of the numeric dB graph to its representation inside the application.</p>
+<p>For HFAv2 formats, the main numeric dB graph required additional preprocessing to achieve
+a relatively acceptable accuracy.</p>
+<p>The image needs to have its axis removed beforehand. Next, the image was split into the upper
+and lower halves. Next, each half was split into a 10 x 19 grid. This was to ensure that the number
+fills the majority of each cell, to enhance the accuracy of Pytesseract. After the values were extracted
+from each cell, the values from both half were combined and condensed into a 10 x 10 matrix.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Overall, the accuracy of the algorithm when processing this graph were lower as
+compared to graphs from HFAv3 reports.
+Furthermore, the character ‘&lt;0’ were consistently misread during our own testing,
+due to the font in which the reports were written. The number reading method as
+seen in HFAv3Reader did not seem to improve the accuracy significantly.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>image</strong> (<em>np.array</em>) – The image of the numeric dB graph</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A 10 x 10 matrix containing the values</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[List[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HFAv2Reader.HFAv2Reader.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#HFAv2Reader.HFAv2Reader.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HFAv2Reader.HFAv2Reader.grid">
+<span class="sig-name descname"><span class="pre">grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HFAv2Reader.HFAv2Reader.grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Debugging tool. Shows a 10 x 10 grid on an image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>image</strong> (<em>Any</em>) – The input image</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HFAv2Reader.HFAv2Reader.image2data">
+<span class="sig-name descname"><span class="pre">image2data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HFAv2Reader.HFAv2Reader.image2data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts an image of a numeric dB graph to its representation inside the application.</p>
+<p>During our development, we noticed that the accuracy of the OCR engine was very poor
+for the numeric dB graphs. Therefore special treatment was needed to enhance the accuracy.</p>
+<p>The method first remove the axis from the graphs. Then it splits the image to a 10 x 10 grid.
+Then for each cell in the grid, the number in the cell is read.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>image</strong> (<em>np.array</em>) – The image of the numeric dB graph</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A 10 x 10 matrix containing the values</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[List[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HFAv2Reader.HFAv2Reader.ocr_core">
+<span class="sig-name descname"><span class="pre">ocr_core</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HFAv2Reader.HFAv2Reader.ocr_core" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts the text from an image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>image</strong> (<em>Image</em>) – The input image</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The text inside the image</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HFAv2Reader.HFAv2Reader.ocr_main_graph">
+<span class="sig-name descname"><span class="pre">ocr_main_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HFAv2Reader.HFAv2Reader.ocr_main_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts the text from a preprocessed image of the main numeric dB graph values</p>
+<p>Due to the limitations of Pytesseract, different configurations were needed for short numerical values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>image</strong> (<em>Image</em>) – The input image</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The text inside the image</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HFAv2Reader.HFAv2Reader.ocr_num">
+<span class="sig-name descname"><span class="pre">ocr_num</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HFAv2Reader.HFAv2Reader.ocr_num" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts the text from a preprocessed image of a numeric dB graph value</p>
+<p>Due to the limitations of Pytesseract, different configurations were needed for short numerical values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>image</strong> (<em>Image</em>) – The input image</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The text inside the image</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HFAv2Reader.HFAv2Reader.pdf_to_img">
+<span class="sig-name descname"><span class="pre">pdf_to_img</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pdf_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HFAv2Reader.HFAv2Reader.pdf_to_img" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a .pdf file to an Image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pdf_file</strong> (<em>str</em>) – The path to the file</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The pages of the pdf file</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HFAv2Reader.HFAv2Reader.readImage">
+<span class="sig-name descname"><span class="pre">readImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HFAv2Reader.HFAv2Reader.readImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts the information from an VFT report</p>
+<p>We assumed that all information fields will be in the same relative location for all reports.
+The method first resizes the image to the same size as our test data. Secondly, several parts
+of the image are cropped and passed to the OCR engine to extract the information. Thirdly,
+several parts of the image were deleted, leaving only the text at the top of the report, which will
+also be passed to the OCR engine. Finally, the information are combined into a VFTReport object,
+which will be returned by the method.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Short numeric values, such as the patient’s age, and values in numeric dB graphs are treated
+differently than normal strings. See readNum for how we processes these values.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dir</strong> (<em>str</em>) – The directory leading to the file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – The name of the file.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The VFT report in the image.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="VFTReport.html#VFTReport.VFTReport" title="VFTReport.VFTReport">VFTReport</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="PytesseractReader.html"
+                        title="previous chapter">PytesseractReader</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="HFAv3Reader.html"
+                        title="next chapter">HFAv3Reader</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/HFAv2Reader.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="HFAv3Reader.html" title="HFAv3Reader"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="PytesseractReader.html" title="PytesseractReader"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Visual Field Test reader 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >Documentations</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="reader.html" >reader</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">HFAv2Reader</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Luong Minh Quang.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.3.
+    </div>
+  </body>
+</html>
