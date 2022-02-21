@@ -61,7 +61,7 @@ class PytesseractReader(ReportReader, Thread):
                 self.curActivity.queueMessage("(" + str(i) + '/' + str(length) + ')Processing ' + filename)
                 reportList.append(self.readfile(dir, filename))
             except:
-                reportList.append(VFTReport(filename,name=None, eyeSide=None, datetime=None, age=None, dob=None, ID=None, FIXLOS=None, FIXTST=None, FNR=None, FPR=None, testDuration=None, GHT=None, VFI=None, MD=None, MDp=None, PSD=None, PSDp=None, pattern=None, strategy=None, stimulus=None, background=None, foveaRefdB=None, SGraphvalues=None, MDGraphValues=None, PSDGraphValues=None, checked=None))
+                reportList.append(VFTReport("(Error)"+filename,name=None, eyeSide=None, datetime=None, age=None, dob=None, ID=None, FIXLOS=None, FIXTST=None, FNR=None, FPR=None, testDuration=None, GHT=None, VFI=None, MD=None, MDp=None, PSD=None, PSDp=None, pattern=None, strategy=None, stimulus=None, background=None, foveaRefdB=None, SGraphvalues=None, MDGraphValues=None, PSDGraphValues=None, checked=None))
                 self.curActivity.queueError("An error has occured while processing file. Skipping to the next report")
                 traceback.print_exc()
         return reportList
