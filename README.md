@@ -13,7 +13,7 @@ reports that have been resized to the correct size. The "docs/test data" directo
 
 ## Mechanisms of VFTReader
 The conventional alphabet wordings are read by using the pre-built Python library pytesseract. However, it is challenging to read an axis of graph as below:
-![axisgraphraw]()
+![axisgraphraw](https://raw.githubusercontent.com/kaiyang7766/VFTReader/main/docs/readmepics/axisgraphraw.PNG)
 
 The raw axis of graph is cleaned and preprocessed by the following steps:
 1) Removing the x-axis and y-axis.
@@ -21,7 +21,7 @@ The raw axis of graph is cleaned and preprocessed by the following steps:
 3) Adding a 10x10 grid to separate the individual groups of digits.
 
 Now the resultant graph will look like this:
-![axisgraphcleaned]()
+![axisgraphcleaned](https://raw.githubusercontent.com/kaiyang7766/VFTReader/main/docs/readmepics/axisgraphcleaned.PNG)
 
 A CNN model will be used to read the digits and symbols within each grid.
 
@@ -29,7 +29,7 @@ A CNN model will be used to read the digits and symbols within each grid.
 Each grid can either contain digits or a null value. A CNN model is trained (see section below on how this model is trained) to recognize the digits and symbols from each grid.
 
 Taking a look at one specific grid value:
-![gridnumber27]()
+![gridnumber27](https://raw.githubusercontent.com/kaiyang7766/VFTReader/main/docs/readmepics/gridnumber27.PNG)
 
 The model should give us the number 27, but the CNN model is only trained on recognizing single digit or symbol, thus image contouring should be applied to seperate the digits. The strategies to do so are as follow:
 ### 1) As the image is rather blurry, image sharpening is first applied to the digits:
@@ -40,7 +40,7 @@ kernel = np.array([[0, -1, 0],
 image_sharp = cv2.filter2D(src=img, ddepth=-1, kernel=kernel)
 ```
 This will produce a sharper image as below:
-![gridnumber27sharpend]()
+![gridnumber27sharpend](https://raw.githubusercontent.com/kaiyang7766/VFTReader/main/docs/readmepics/gridnumber27sharpend.PNG)
 Sharpen image allows the method later to detect the digit separation easier using pixel threshold value. Note that the conventional Canny edge detection which involves blurring the image first does not work well here due to distance of digits being too close to each other. You can have a read at the Canny edge detection [here](https://www.thepythoncode.com/article/contour-detection-opencv-python).
 
 ### 2) With the sharpened image, digit separation can be achieved by 3 steps:
@@ -96,7 +96,7 @@ def findcontour(img:np.array,sens=False):
     return dim
 ```
 ### 3) Drawing the width found in a rectangle, the image separation is found as below:
-![gridnumber27seperated]()
+![gridnumber27seperated](https://raw.githubusercontent.com/kaiyang7766/VFTReader/main/docs/readmepics/gridnumber27seperated.PNG)
 
 The CNN model can now predict the individual digit based on the separation.
 
@@ -104,14 +104,14 @@ The CNN model can now predict the individual digit based on the separation.
 As the digits font used in VFT Reports are Arial, the data used to train the CNN model is Arial font from 0 to 9 with symbols like negative sign "-" and "<".
 
 ImageDataGenerator is used to create 200,000 more data with different rotation, width shift, height shift, shear and zoom:
-![ImageDataGenerator]()
+![ImageDataGenerator](https://raw.githubusercontent.com/kaiyang7766/VFTReader/main/docs/readmepics/ImageDataGenerator.PNG)
 
 The keras CNN model is built with 8 layers as follow:
-![kerasmodel]()
+![kerasmodel](https://raw.githubusercontent.com/kaiyang7766/VFTReader/main/docs/readmepics/kerasmodel.PNG)
 The model is compiled with adam optimizer, with loss calculation using CategoricalCrossentropy as each digit is treated as a category.
 
 The model is trained with batch size of 128 and epochs of 10, the resulting prediction accuracy is up to 99.58%:
-![trainingaccuracy]()
+![trainingaccuracy](https://raw.githubusercontent.com/kaiyang7766/VFTReader/main/docs/readmepics/trainingaccuracy.PNG)
 
 # Acknowledgement
 
