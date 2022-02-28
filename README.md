@@ -29,6 +29,7 @@ A CNN model will be used to read the digits and symbols within each grid.
 Each grid can either contain digits or a null value. A CNN model is trained (see section below on how this model is trained) to recognize the digits and symbols from each grid.
 
 Taking a look at one specific grid value:
+
 ![gridnumber27](https://raw.githubusercontent.com/kaiyang7766/VFTReader/main/docs/readmepics/gridnumber27.PNG)
 
 The model should give us the number 27, but the CNN model is only trained on recognizing single digit or symbol, thus image contouring should be applied to seperate the digits. The strategies to do so are as follow:
@@ -40,6 +41,7 @@ kernel = np.array([[0, -1, 0],
 image_sharp = cv2.filter2D(src=img, ddepth=-1, kernel=kernel)
 ```
 This will produce a sharper image as below:
+
 ![gridnumber27sharpend](https://raw.githubusercontent.com/kaiyang7766/VFTReader/main/docs/readmepics/gridnumber27sharpened.PNG)
 Sharpen image allows the method later to detect the digit separation easier using pixel threshold value. Note that the conventional Canny edge detection which involves blurring the image first does not work well here due to distance of digits being too close to each other. You can have a read at the Canny edge detection [here](https://www.thepythoncode.com/article/contour-detection-opencv-python).
 
