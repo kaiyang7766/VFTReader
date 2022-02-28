@@ -43,6 +43,7 @@ image_sharp = cv2.filter2D(src=img, ddepth=-1, kernel=kernel)
 This will produce a sharper image as below:
 
 ![gridnumber27sharpend](https://raw.githubusercontent.com/kaiyang7766/VFTReader/main/docs/readmepics/gridnumber27sharpened.PNG)
+
 Sharpen image allows the method later to detect the digit separation easier using pixel threshold value. Note that the conventional Canny edge detection which involves blurring the image first does not work well here due to distance of digits being too close to each other. You can have a read at the Canny edge detection [here](https://www.thepythoncode.com/article/contour-detection-opencv-python).
 
 ### 2) With the sharpened image, digit separation can be achieved by 3 steps:
@@ -109,7 +110,9 @@ ImageDataGenerator is used to create 200,000 more data with different rotation, 
 ![ImageDataGenerator](https://raw.githubusercontent.com/kaiyang7766/VFTReader/main/docs/readmepics/ImageDataGenerator.PNG)
 
 The keras CNN model is built with 8 layers as follow:
+
 ![kerasmodel](https://raw.githubusercontent.com/kaiyang7766/VFTReader/main/docs/readmepics/kerasmodel.PNG)
+
 The model is compiled with adam optimizer, with loss calculation using CategoricalCrossentropy as each digit is treated as a category.
 
 The model is trained with batch size of 128 and epochs of 10, the resulting prediction accuracy is up to 99.58%:
