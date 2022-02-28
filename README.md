@@ -122,4 +122,4 @@ The model is trained with batch size of 128 and epochs of 10, the resulting pred
 
 # Acknowledgement
 
-All files within 'poppler-0.68.0_x86' and 'Tesseract-OCR' are external frameworks, and not the author's original work.
+This project is jointly created by the previous intern [Luong-Minh-Quang](https://github.com/Luong-Minh-Quang/) and myself. All files within 'poppler-0.68.0_x86' and 'Tesseract-OCR' are external frameworks, and not the author's original work.
