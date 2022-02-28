@@ -40,7 +40,7 @@ kernel = np.array([[0, -1, 0],
 image_sharp = cv2.filter2D(src=img, ddepth=-1, kernel=kernel)
 ```
 This will produce a sharper image as below:
-![gridnumber27sharpend](https://raw.githubusercontent.com/kaiyang7766/VFTReader/main/docs/readmepics/gridnumber27sharpend.PNG)
+![gridnumber27sharpend](https://raw.githubusercontent.com/kaiyang7766/VFTReader/main/docs/readmepics/gridnumber27sharpened.PNG)
 Sharpen image allows the method later to detect the digit separation easier using pixel threshold value. Note that the conventional Canny edge detection which involves blurring the image first does not work well here due to distance of digits being too close to each other. You can have a read at the Canny edge detection [here](https://www.thepythoncode.com/article/contour-detection-opencv-python).
 
 ### 2) With the sharpened image, digit separation can be achieved by 3 steps:
@@ -96,7 +96,7 @@ def findcontour(img:np.array,sens=False):
     return dim
 ```
 ### 3) Drawing the width found in a rectangle, the image separation is found as below:
-![gridnumber27seperated](https://raw.githubusercontent.com/kaiyang7766/VFTReader/main/docs/readmepics/gridnumber27seperated.PNG)
+![gridnumber27separated](https://raw.githubusercontent.com/kaiyang7766/VFTReader/main/docs/readmepics/gridnumber27separated.PNG)
 
 The CNN model can now predict the individual digit based on the separation.
 
