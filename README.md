@@ -13,6 +13,7 @@ reports that have been resized to the correct size. The "docs/test data" directo
 
 ## Mechanisms of VFTReader
 The conventional alphabet wordings are read by using the pre-built Python library pytesseract. However, it is challenging to read an axis of graph as below:
+
 ![axisgraphraw](https://raw.githubusercontent.com/kaiyang7766/VFTReader/main/docs/readmepics/axisgraphraw.PNG)
 
 The raw axis of graph is cleaned and preprocessed by the following steps:
@@ -21,6 +22,7 @@ The raw axis of graph is cleaned and preprocessed by the following steps:
 3) Adding a 10x10 grid to separate the individual groups of digits.
 
 Now the resultant graph will look like this:
+
 ![axisgraphcleaned](https://raw.githubusercontent.com/kaiyang7766/VFTReader/main/docs/readmepics/axisgraphcleaned.PNG)
 
 A CNN model will be used to read the digits and symbols within each grid.
