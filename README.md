@@ -108,7 +108,7 @@ The CNN model can now predict the individual digit based on the separation indic
 ## Convolutional Neural Network (CNN) Training
 As the digits font used in VFT Reports are Arial, the data used to train the CNN model is Arial font from 0 to 9 with symbols like negative sign "-" and "<".
 
-ImageDataGenerator is used to create 200,000 more data with different rotation, width shift, height shift, shear and zoom:
+ImageDataGenerator is used to create 370,000 more data with different rotation, width shift, height shift, shear and zoom:
 ![ImageDataGenerator](https://raw.githubusercontent.com/kaiyang7766/VFTReader/main/docs/readmepics/ImageDataGenerator.PNG)
 
 The keras CNN model is built with 8 layers as follow:
