@@ -12,7 +12,7 @@ understanding the structure of the project.
 reports that have been resized to the correct size. The "docs/test data" directory contains test reports that the program was able to perform relatively accurate on. You may preprocess your data such that all information fields in your data are in the same relative location as the fields in the test reports. -->
 
 ## Mechanisms of VFTReader
-The conventional alphabet wordings are read by using the pre-built Python library pytesseract. However, it is challenging to read an axis of graph as below:
+The conventional alphabet wordings are read by using the pre-built Python library pytesseract. However, it is challenging to read an axis of graph like below:
 
 ![axisgraphraw](https://raw.githubusercontent.com/kaiyang7766/VFTReader/main/docs/readmepics/axisgraphraw.PNG)
 
