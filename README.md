@@ -103,7 +103,7 @@ def findcontour(img:np.array,sens=False):
 ### 3) Drawing the width found in a rectangle, the image separation is found as below:
 ![gridnumber27separated](https://raw.githubusercontent.com/kaiyang7766/VFTReader/main/docs/readmepics/gridnumber27separated.PNG)
 
-The CNN model can now predict the individual digit based on the separation.
+The CNN model can now predict the individual digit based on the separation indicated by the red rectangles.
 
 ## Convolutional Neural Network (CNN) Training
 As the digits font used in VFT Reports are Arial, the data used to train the CNN model is Arial font from 0 to 9 with symbols like negative sign "-" and "<".
